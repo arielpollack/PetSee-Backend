@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160423165206) do
     t.string   "token"
     t.string   "name"
     t.string   "phone",        limit: 13
+    t.string   "type"
     t.integer  "location_id"
     t.text     "about",        limit: 255
     t.string   "image"

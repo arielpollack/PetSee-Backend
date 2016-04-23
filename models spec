@@ -46,6 +46,7 @@ models
 		service_provider
 		time_start
 		time_end
+		type
 		status
 		locations
 

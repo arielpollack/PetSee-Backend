@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :token
       t.string :name
       t.string :phone, limit: 13
+      t.string :type
       t.references :location, index: true, foreign_key: true
       t.text :about, limit: 255
       t.string :image
