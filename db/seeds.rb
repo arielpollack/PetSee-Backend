@@ -7,15 +7,29 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # password "ariel"
-ariel = User.create({name: "Ariel", email: "ariel@pollack.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-yossi = User.create({name: "Yossi", email: "yossi@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-dani = User.create({name: "Danni", email: "danni@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-coral = User.create({name: "Coral", email: "coral@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-yanir = User.create({name: "Yanir", email: "yanir@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+ariel = Client.create({name: "Ariel", email: "ariel@pollack.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+yossi = ServiceProvider.create({name: "Yossi", email: "yossi@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+dani = ServiceProvider.create({name: "Danni", email: "danni@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+coral = Client.create({name: "Coral", email: "coral@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+yanir = ServiceProvider.create({name: "Yanir", email: "yanir@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
 
-Review.create({rate: 4, user: ariel, writer: coral, details: "Nice person"});
-Review.create({rate: 3, user: ariel, writer: dani, details: "cool person"});
-Review.create({rate: 5, user: ariel, writer: coral, details: "the best person"});
-Review.create({rate: 2, user: yossi, writer: dani, details: "not so good"});
-Review.create({rate: 1, user: yossi, writer: yanir, details: "aweful person"});
-Review.create({rate: 3, user: yossi, writer: ariel, details: "medium person"});
+pincher = Race.create({name: "Pincher"})
+italian = Race.create({name: "Italian Greyhound"})
+
+milky = Pet.create({name: "Milky", race: pincher, color: "black", owner: ariel})
+bella = Pet.create({name: "Bella", race: italian, color: "brown", owner: coral})
+
+service = Service.create({client: ariel, pet: milky, type: "dogwalk"})
+ServiceRequest.create({service: service, service_provider: yossi, status: "pending"})
+ServiceRequest.create({service: service, service_provider: dani, status: "pending"})
+ServiceRequest.create({service: service, service_provider: yanir, status: "pending"})
+service = Service.create({client: coral, pet: bella, type: "dogsit"})
+ServiceRequest.create({service: service, service_provider: yossi, status: "pending"})
+ServiceRequest.create({service: service, service_provider: yanir, status: "pending"})
+
+Review.create({rate: 4, user: ariel, writer: coral, feedback: "Nice person"});
+Review.create({rate: 3, user: ariel, writer: dani, feedback: "cool person"});
+Review.create({rate: 5, user: ariel, writer: coral, feedback: "the best person"});
+Review.create({rate: 2, user: yossi, writer: dani, feedback: "not so good"});
+Review.create({rate: 1, user: yossi, writer: yanir, feedback: "aweful person"});
+Review.create({rate: 3, user: yossi, writer: ariel, feedback: "medium person"});

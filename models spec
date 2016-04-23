@@ -1,0 +1,69 @@
+models
+	user
+		email: unique
+		password
+		token
+		name
+		phone
+		location
+		about
+		image
+		services
+		service_requests
+		reviews
+		wrote_reviews
+
+	client < user
+		pets
+
+	service_provider < user
+		skills
+	
+	pet
+		name
+		race
+		color
+		about
+		image
+		owner
+		is_trained
+		birthday
+
+	race
+		name
+		about
+		image
+	
+	review
+		rate
+		feedback
+		user
+		writer
+	
+	service
+		client
+		pet
+		service_provider
+		time_start
+		time_end
+		status
+		locations
+
+	service_request
+		service
+		service_provider
+		status
+
+	location
+		lat
+		lng
+		name
+
+	skill
+		name
+
+	service_provider_skill
+		skill
+		service_provider
+		years_of_experience
+		details
