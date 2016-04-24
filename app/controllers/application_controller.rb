@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :authenticate
+  before_action :set_default_response_format
 
   protected
   def authenticate
@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
   	self.headers['WWW-Authenticate'] = 'Token realm="Petsee"'
   	render json: 'Bad credentials', status: 401
   end
+
+  def set_default_response_format
+    request.format = :json
+  end
+
 end

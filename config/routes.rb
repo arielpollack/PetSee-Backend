@@ -1,6 +1,32 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :users, defaults: {format: :json}
+  resources :users do
+    resource :reviews do
+      collection do
+        get :index # GET users/1/reviews
+        post :new # POST users/1/reviews
+      end
+    end
+
+    resource :pets do
+      collection do
+        get :index
+      end
+    end
+
+    collection do
+      resource :pets do
+        
+      end
+    end
+  end
+
+  resources :auth do 
+    collection do 
+      get :login
+      post :signup
+      put :change_password
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
