@@ -615,3 +615,270 @@ Processing by ReviewsController#index as HTML
   [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')[0m  [["user_id", 3]]
   Rendered reviews/index.json.jbuilder (0.6ms)
 Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/pets" for 127.0.0.1 at 2016-04-24 21:52:29 +0300
+
+ActionController::RoutingError (uninitialized constant PetsController):
+  activesupport (4.2.6) lib/active_support/inflector/methods.rb:261:in `const_get'
+  activesupport (4.2.6) lib/active_support/inflector/methods.rb:261:in `block in constantize'
+  activesupport (4.2.6) lib/active_support/inflector/methods.rb:259:in `each'
+  activesupport (4.2.6) lib/active_support/inflector/methods.rb:259:in `inject'
+  activesupport (4.2.6) lib/active_support/inflector/methods.rb:259:in `constantize'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:70:in `controller_reference'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:60:in `controller'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:39:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (61.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (13.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.1ms)
+
+
+Started GET "/users/3/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:53:55 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"3", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')[0m  [["user_id", 3]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')  [["user_id", 3]]
+  Rendered reviews/index.json.jbuilder (2.7ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:53:58 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 3)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered users/_user.json.jbuilder (0.0ms)
+  Rendered reviews/_review.json.jbuilder (0.6ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')  [["user_id", 1]]
+  Rendered reviews/index.json.jbuilder (6.3ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/pets" for 127.0.0.1 at 2016-04-24 21:56:32 +0300
+
+AbstractController::ActionNotFound (The action 'show' could not be found for PetsController):
+  actionpack (4.2.6) lib/abstract_controller/base.rb:132:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (35.0ms)
+
+
+Started GET "/users/pets" for 127.0.0.1 at 2016-04-24 21:57:42 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"pet"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.8ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  [1m[36mRace Load (0.5ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (1)[0m
+  Rendered pets/_pet.json.jbuilder (0.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  Rendered pets/index.json.jbuilder (17.8ms)
+Completed 200 OK in 47ms (Views: 21.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/pets" for 127.0.0.1 at 2016-04-24 22:00:15 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"pet"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.2ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  [1m[36mRace Load (0.1ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (1)[0m
+  Rendered pets/_pet.json.jbuilder (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  Rendered pets/index.json.jbuilder (14.2ms)
+Completed 200 OK in 37ms (Views: 16.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/2/pets" for 127.0.0.1 at 2016-04-24 22:00:19 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"user_id"=>"2", "pet"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.1ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?[0m  [["owner_id", 2]]
+  Rendered pets/index.json.jbuilder (1.2ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3/pets" for 127.0.0.1 at 2016-04-24 22:00:23 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"user_id"=>"3", "pet"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mPet Load (0.1ms)[0m  [1mSELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?[0m  [["owner_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 3]]
+  Rendered pets/index.json.jbuilder (1.0ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/4/pets" for 127.0.0.1 at 2016-04-24 22:00:26 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"user_id"=>"4", "pet"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.1ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  [1m[36mRace Load (0.1ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (2)[0m
+  Rendered pets/_pet.json.jbuilder (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  Rendered pets/index.json.jbuilder (3.1ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/4/pets" for 127.0.0.1 at 2016-04-24 22:00:39 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"user_id"=>"4", "pet"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.1ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  [1m[36mRace Load (0.2ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (2)[0m
+  Rendered pets/_pet.json.jbuilder (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  Rendered pets/index.json.jbuilder (3.1ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/4/pets" for 127.0.0.1 at 2016-04-24 22:00:41 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"user_id"=>"4", "pet"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.1ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  [1m[36mRace Load (0.2ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (2)[0m
+  Rendered pets/_pet.json.jbuilder (0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 4]]
+  Rendered pets/index.json.jbuilder (3.7ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/pets" for 127.0.0.1 at 2016-04-24 22:00:45 +0300
+Processing by PetsController#index as HTML
+  Parameters: {"pet"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mPet Load (0.1ms)[0m  SELECT "pets".* FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  [1m[36mRace Load (0.1ms)[0m  [1mSELECT "races".* FROM "races" WHERE "races"."id" IN (1)[0m
+  Rendered pets/_pet.json.jbuilder (0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pets" WHERE "pets"."owner_id" = ?  [["owner_id", 1]]
+  Rendered pets/index.json.jbuilder (3.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.4ms)

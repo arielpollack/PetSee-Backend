@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
     collection do
       resource :pets do
-        
+        collection do
+          get :index
+        end
       end
     end
   end
