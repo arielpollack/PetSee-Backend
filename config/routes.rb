@@ -2,21 +2,26 @@ Rails.application.routes.draw do
   resources :users do
     resource :reviews do
       collection do
-        get :index # GET users/1/reviews
-        post :new # POST users/1/reviews
+        get :index # users/1/reviews -> specific user reviews
+        post :new # users/1/reviews -> post review on user
       end
     end
 
     resource :pets do
       collection do
-        get :index
+        get :index # users/1/pets -> specific user pets
       end
     end
 
     collection do
       resource :pets do
         collection do
-          get :index
+          get :index # users/pets -> current user pets
+        end
+      end
+      resource :reviews do
+        collection do
+          get :my_reviews
         end
       end
     end
@@ -24,9 +29,9 @@ Rails.application.routes.draw do
 
   resources :auth do 
     collection do 
-      get :login
-      post :signup
-      put :change_password
+      get :login # auth/login
+      post :signup # auth/signup
+      put :change_password # auth/change_password
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
