@@ -1,0 +1,617 @@
+
+
+Started GET "/users" for 127.0.0.1 at 2016-04-24 21:17:00 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  Rendered users/_user.json.jbuilder (1.7ms)
+  Rendered users/index.json.jbuilder (13.1ms)
+Completed 200 OK in 60ms (Views: 24.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-04-24 21:20:14 +0300
+Processing by UsersController#index as HTML
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  Rendered users/_user.json.jbuilder (0.5ms)
+  Rendered users/index.json.jbuilder (1.1ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-04-24 21:20:21 +0300
+Processing by UsersController#index as HTML
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  Rendered users/_user.json.jbuilder (12.2ms)
+  Rendered users/index.json.jbuilder (12.9ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `to_float' for #<BigDecimal:7fae57c8a188,'0.4E1',9(18)>):
+    1: json.extract! user, :id, :email, :name, :rating_count, :created_at, :updated_at
+    2: json.rating user.rating.to_float
+  app/views/users/_user.json.jbuilder:2:in `_app_views_users__user_json_jbuilder___2701659334150746983_70193386915960'
+  app/views/users/index.json.jbuilder:1:in `_app_views_users_index_json_jbuilder__985070821292671808_70193387162400'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (39.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (51.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-04-24 21:20:28 +0300
+Processing by UsersController#index as HTML
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  Rendered users/_user.json.jbuilder (2.2ms)
+  Rendered users/index.json.jbuilder (2.8ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `to_decimal' for #<BigDecimal:7fae57b7a9c8,'0.4E1',9(18)>):
+    1: json.extract! user, :id, :email, :name, :rating_count, :created_at, :updated_at
+    2: json.rating user.rating.to_decimal
+  app/views/users/_user.json.jbuilder:2:in `_app_views_users__user_json_jbuilder___2701659334150746983_70193397484300'
+  app/views/users/index.json.jbuilder:1:in `_app_views_users_index_json_jbuilder__985070821292671808_70193387162400'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-04-24 21:20:56 +0300
+Processing by UsersController#index as HTML
+  Parameters: {"user"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  Rendered users/_user.json.jbuilder (0.6ms)
+  Rendered users/index.json.jbuilder (1.9ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:21:39 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  Rendered reviews/index.json.jbuilder (2.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `reviews' for nil:NilClass):
+    1: json.array! @user.reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (13.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (27.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mReview Load (0.9ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?  [["user_id", 1]]
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:28:04 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms)
+
+NoMethodError (undefined method `contains' for #<Class:0x007fae59018dd0>):
+  app/controllers/reviews_controller.rb:7:in `index'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (34.4ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:29:31 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.2ms)
+
+NoMethodError (undefined method `contains' for #<Class:0x007fae57d19220>):
+  app/controllers/reviews_controller.rb:6:in `index'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (29.9ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:31:14 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" IN (1)
+  Rendered reviews/_review.json.jbuilder (2.9ms)
+  Rendered reviews/index.json.jbuilder (4.1ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (undefined method `details' for #<Review:0x007fae57d09cf8>):
+    1: json.extract! review, :id, :rate, :details, :created_at, :updated_at
+    2: json.user do
+    3: 	json.partial! 'users/user', :user => review.user
+    4: end
+  app/views/reviews/_review.json.jbuilder:1:in `_app_views_reviews__review_json_jbuilder___183137597541038492_70193397713960'
+  app/views/reviews/index.json.jbuilder:2:in `block in _app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (12.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (27.2ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:31:31 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" IN (1)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (4.2ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered users/_user.json.jbuilder (0.3ms)
+  Rendered reviews/_review.json.jbuilder (21.9ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered users/_user.json.jbuilder (0.3ms)
+  Rendered reviews/_review.json.jbuilder (3.2ms)
+  Rendered reviews/index.json.jbuilder (32.8ms)
+Completed 200 OK in 38ms (Views: 34.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:32:36 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" IN (1)[0m
+  Rendered reviews/_review.json.jbuilder (11.0ms)
+  Rendered reviews/index.json.jbuilder (11.6ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined local variable or method `include_user' for #<#<Class:0x007fae59139ac0>:0x007fae54549a98>):
+    1: json.extract! review, :id, :rate, :feedback, :created_at, :updated_at
+    2: if include_user.present?
+    3: 	json.user do
+    4: 		json.partial! 'users/user', :user => review.user
+    5: 	end
+  app/views/reviews/_review.json.jbuilder:2:in `_app_views_reviews__review_json_jbuilder___183137597541038492_70193362835880'
+  app/views/reviews/index.json.jbuilder:2:in `block in _app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (32.8ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:35:28 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4)
+  Rendered reviews/index.json.jbuilder (1.8ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (undefined method `reviews' for nil:NilClass):
+    1: json.array! @user.reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193385802160'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.7ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:36:15 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT  "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (4)[0m
+  Rendered reviews/index.json.jbuilder (2.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `map' for #<Review:0x007fae54794d20>):
+    1: json.array! @reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193359092180'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (30.6ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:36:40 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4, 3)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (1.2ms)
+  Rendered users/_user.json.jbuilder (0.3ms)
+  Rendered reviews/_review.json.jbuilder (1.1ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (0.6ms)
+  Rendered reviews/index.json.jbuilder (40.2ms)
+Completed 200 OK in 70ms (Views: 43.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:37:03 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" INNER JOIN "users" ON "users"."id" = "reviews"."writer_id" WHERE "reviews"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (2.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (12.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (1.3ms)
+  Rendered reviews/index.json.jbuilder (50.3ms)
+Completed 200 OK in 80ms (Views: 53.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:39:24 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.9ms)[0m  [1mSELECT "reviews".* FROM "reviews" LEFT JOIN `user` ON `user`.`user_id` = `reviews`.`writer_id` WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered reviews/index.json.jbuilder (3.2ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.8ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such table: user: SELECT "reviews".* FROM "reviews" LEFT JOIN `user` ON `user`.`user_id` = `reviews`.`writer_id` WHERE "reviews"."user_id" = ?):
+    1: json.array! @reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193359092180'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (28.5ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:39:44 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.9ms)[0m  [1mSELECT "reviews".* FROM "reviews" LEFT JOIN `users` ON `users`.`user_id` = `reviews`.`writer_id` WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered reviews/index.json.jbuilder (3.2ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.9ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: users.user_id: SELECT "reviews".* FROM "reviews" LEFT JOIN `users` ON `users`.`user_id` = `reviews`.`writer_id` WHERE "reviews"."user_id" = ?):
+    1: json.array! @reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+  app/views/reviews/index.json.jbuilder:1:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193359092180'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (13.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (29.9ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:42:19 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" IN (NULL, NULL)[0m
+Completed 404 Not Found in 25ms (ActiveRecord: 1.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find all Reviews with 'id': (all, {:joins=>"LEFT JOIN `users` ON `users`.`user_id` = `reviews`.`writer_id`", :select=>"users.*, reviews.*", :group=>"users.user_id"}) (found 0 results, but was looking for 2)):
+  app/controllers/reviews_controller.rb:6:in `index'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (14.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (29.5ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:43:57 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4, 3)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.9ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (1.1ms)
+  Rendered reviews/index.json.jbuilder (21.6ms)
+Completed 200 OK in 57ms (Views: 24.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/reviews" for 127.0.0.1 at 2016-04-24 21:49:30 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > NULL)  [["user_id", 1]]
+  Rendered reviews/index.json.jbuilder (1.1ms)
+Completed 200 OK in 25ms (Views: 4.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:49:38 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 3)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (1.0ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered reviews/index.json.jbuilder (21.8ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/reviews?last_index=1" for 127.0.0.1 at 2016-04-24 21:49:44 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"1", "user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '1')[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (3, 4)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered reviews/index.json.jbuilder (4.5ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/reviews?last_index=2" for 127.0.0.1 at 2016-04-24 21:49:46 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"2", "user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '2')  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (4)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered reviews/index.json.jbuilder (3.4ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/reviews?last_index=2" for 127.0.0.1 at 2016-04-24 21:50:13 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"2", "user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '2')[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '2')[0m  [["user_id", 1]]
+  Rendered reviews/index.json.jbuilder (6.4ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (Failed to add "total" property to an array):
+    1: json.array! @reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+    4: json.total @reviews.count
+  app/views/reviews/index.json.jbuilder:4:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193357376660'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.3ms)
+
+
+Started GET "/users/1/reviews?last_index=2" for 127.0.0.1 at 2016-04-24 21:50:21 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"2", "user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '2')[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered reviews/index.json.jbuilder (5.4ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (Failed to add "total" property to an array):
+    1: json.array! @reviews do |review|
+    2: 	json.partial! 'reviews/review', :review => review
+    3: end
+    4: json.total @reviews.length
+  app/views/reviews/index.json.jbuilder:4:in `_app_views_reviews_index_json_jbuilder__1939701356823899063_70193398670400'
+
+
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (18.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.2ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/arielpollack/.rvm/rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (34.9ms)
+
+
+Started GET "/users/1/reviews?last_index=2" for 127.0.0.1 at 2016-04-24 21:51:05 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"2", "user_id"=>"1", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '2')  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (4)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.9ms)
+  Rendered reviews/index.json.jbuilder (3.8ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:51:10 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"1", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (4, 3)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.7ms)
+  Rendered users/_user.json.jbuilder (0.1ms)
+  Rendered reviews/_review.json.jbuilder (0.8ms)
+  Rendered reviews/index.json.jbuilder (6.6ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:51:42 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"2", "review"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1[0m  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[35mReview Load (0.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')  [["user_id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (3, 5, 1)[0m
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (1.0ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.9ms)
+  Rendered users/_user.json.jbuilder (0.2ms)
+  Rendered reviews/_review.json.jbuilder (0.9ms)
+  Rendered reviews/index.json.jbuilder (7.4ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/3/reviews?last_index=0" for 127.0.0.1 at 2016-04-24 21:51:53 +0300
+Processing by ReviewsController#index as HTML
+  Parameters: {"last_index"=>"0", "user_id"=>"3", "review"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = ? LIMIT 1  [["token", "a60a93de6ca842388820812d456c37bf"]]
+  [1m[36mReview Load (0.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = ? AND (id > '0')[0m  [["user_id", 3]]
+  Rendered reviews/index.json.jbuilder (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)

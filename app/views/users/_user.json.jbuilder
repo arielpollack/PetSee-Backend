@@ -1,4 +1,2 @@
-json.extract! user, :id, :email, :token, :name, :created_at, :updated_at
-json.pets user.pets do |pet|
-	json.partial! 'pets/pet', :pet => pet
-end
+json.extract! user, :id, :email, :name, :rating_count, :created_at, :updated_at
+json.rating user.rating.to_f

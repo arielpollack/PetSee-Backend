@@ -1,3 +1,4 @@
-json.array! @reviews do |review|
+json.reviews @reviews do |review|
 	json.partial! 'reviews/review', :review => review
 end
+json.total @reviews.length
