@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_default_response_format
+  skip_before_filter :verify_authenticity_token
 
   protected
   def authenticate
@@ -24,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   def set_default_response_format
     request.format = :json
+  end
+
+  def render_errors(errors)
+    render :json => {:has_erors => true, :errors => errors}, :status => :unprocessable_entity
   end
 
 end

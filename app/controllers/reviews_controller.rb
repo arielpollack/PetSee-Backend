@@ -3,14 +3,14 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    last_index = params[:last_index]
+    last_index = params[:last_index] || 0
     @reviews = Review.includes(:writer).where(user_id: params[:user_id]).where("id > ?", last_index)
     @with_user = false
     @with_writer = true
   end
 
   def my_reviews
-    last_index = params[:last_index]
+    last_index = params[:last_index] || 0
     @reviews = Review.includes(:user).where(writer_id: @current_user.id).where("id > ?", last_index)
     @with_user = true
     @with_writer = false

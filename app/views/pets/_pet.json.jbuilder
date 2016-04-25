@@ -1,2 +1,2 @@
-json.extract! pet, :name, :id, :color, :about
+json.extract! pet, :name, :id, :color, :about, :image
 json.race pet.race.name

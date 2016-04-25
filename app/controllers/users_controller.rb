@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.json
+        render
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
