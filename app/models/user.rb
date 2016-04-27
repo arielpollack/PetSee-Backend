@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
 
 	before_create :set_auth_token
 
+	@@valid_types = [Client.name, ServiceProvider.name]
+
+	def self.valid_types
+		@@valid_types
+	end
+
 	private
 	def set_auth_token
 		return if token.present?
