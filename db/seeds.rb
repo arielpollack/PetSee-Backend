@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # password "ariel"
-ariel = Client.create({name: "Ariel", email: "ariel@pollack.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-yossi = ServiceProvider.create({name: "Yossi", email: "yossi@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
-dani = ServiceProvider.create({name: "Danni", email: "danni@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+ariel = Client.create({name: "Ariel", email: "Ariel@polLaCk.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+yossi = ServiceProvider.create({name: "Yossi", email: "yoSSi@aSd.Com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
+dani = ServiceProvider.create({name: "Danni", email: "dAnNi@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
 coral = Client.create({name: "Coral", email: "coral@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
 yanir = ServiceProvider.create({name: "Yanir", email: "yanir@asd.com", password: "0a2e4da8f53ff496298559b7f100067ec5868c8b"})
 

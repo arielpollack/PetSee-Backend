@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     collection do 
       post :login
       post :signup
-      put :change_password
+      get :is_email_exist
     end
   end
   
