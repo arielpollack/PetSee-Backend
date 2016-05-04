@@ -13,6 +13,7 @@ class AuthController < ApplicationController
 		params[:password] = enc_password
 		@user = User.new(auth_params)
 		render_error "failed save" and return unless @user.save
+		@with_token = true
 		render 'users/_user', :locals => {:user => @user}
 	end
 

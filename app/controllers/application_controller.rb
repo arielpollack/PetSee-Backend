@@ -19,8 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_unauthorized
-  	self.headers['WWW-Authenticate'] = 'Token realm="Petsee"'
-  	render json: 'Bad credentials', status: 401
+  	render :json => {:error => 'Bad credentials'}, :status => 401
   end
 
   def set_default_response_format
