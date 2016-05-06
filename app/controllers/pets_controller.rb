@@ -9,20 +9,20 @@ class PetsController < ApplicationController
 	def create
 		p = pet_params
 		p[:owner_id] = @current_user.id
-		@pet = Pet.new(p)
-		if @pet.save
-			render 'pets/_pet', :locals => {:pet => @pet}
+		pet = Pet.new(p)
+		if pet.save
+			render 'pets/_pet', :locals => {:pet => pet}
 		else
-			render :json => {:has_erors => true, :errors => @pet.errors}, :status => :unprocessable_entity
+			render :json => {:has_erors => true, :errors => pet.errors}, :status => :unprocessable_entity
 		end
 	end
 
 	def update 
-		@pet = Pet.update(pet_params)
-		if @pet.save
-			render 'pets/pet', :pet => @pet
+		pet = Pet.update(pet_params)
+		if pet.save
+			render 'pets/_pet', :locals => {:pet => pet}
 		else
-			render :json => {:has_erors => true, :errors => @pet.errors}, :status => :unprocessable_entity
+			render :json => {:has_erors => true, :errors => pet.errors}, :status => :unprocessable_entity
 		end
 	end
 
