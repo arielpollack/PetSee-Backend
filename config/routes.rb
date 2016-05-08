@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, param: :user_id, only: [] do
+  resources :users, param: :user_id, only: [:index] do
     member do
       resources :pets, only: [:index]
       resources :reviews, only: [:index, :create]

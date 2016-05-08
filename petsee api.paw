@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>EF54656C-84A2-4402-95AC-C6E9C6702A00</UUID>
-        <nextObjectID>138</nextObjectID>
+        <nextObjectID>141</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -96,14 +96,14 @@
     <object type="LMREQUEST" id="z105">
         <attribute name="body" type="string">[{"data":{"json":"{}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">EC562B07-F3FB-4B32-8E22-5D5C49957D50</attribute>
-        <attribute name="url" type="string">http://localhost:3000/races?query=p</attribute>
+        <attribute name="url" type="string">http://localhost:3000/races?query=</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">3</attribute>
+        <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">search race</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z134"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -271,7 +271,7 @@
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"json":"{\\"pet\\":{\\"name\\":\\"Huey\\",\\"image\\":\\"http:\\\\\\/\\\\\\/www.pets4homes.co.uk\\\\\\/images\\\\\\/articles\\\\\\/2339\\\\\\/large\\\\\\/the-genetics-of-the-rhodesian-ridgeback-dogs-ridge-5476f97a0ce46.jpg\\",\\"about\\":\\"Lion Killer dog\\",\\"color\\":\\"brown\\",\\"is_trained\\":true,\\"race_id\\":4}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">1</attribute>
+        <attribute name="order" type="int64">2</attribute>
         <attribute name="name" type="string">another user pets</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z134"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -317,7 +317,7 @@
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"json":"{\\"race\\":{\\"name\\":\\"Siberian Haski\\"}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">4</attribute>
+        <attribute name="order" type="int64">5</attribute>
         <attribute name="name" type="string">add new race</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z134"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -420,7 +420,7 @@
         <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">pets</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z105 z102 z121 z125 z136"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z140 z105 z102 z121 z125 z136"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -437,7 +437,7 @@
     </object>
     <object type="LMREQUEST" id="z136">
         <attribute name="uuid" type="string">E7F8FD03-0375-44A4-BE4A-B0746E399F43</attribute>
-        <attribute name="url" type="string">http://localhost:3000/services/1/requests</attribute>
+        <attribute name="url" type="string">http://localhost:3000/users/1/pets</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -445,7 +445,7 @@
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"json":"{\\"pet\\":{\\"name\\":\\"Huey\\",\\"image\\":\\"http:\\\\\\/\\\\\\/www.pets4homes.co.uk\\\\\\/images\\\\\\/articles\\\\\\/2339\\\\\\/large\\\\\\/the-genetics-of-the-rhodesian-ridgeback-dogs-ridge-5476f97a0ce46.jpg\\",\\"about\\":\\"Lion Killer dog\\",\\"color\\":\\"brown\\",\\"is_trained\\":true,\\"race_id\\":4}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">2</attribute>
+        <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">another user pets Duplicate</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z134"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -470,5 +470,41 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z136"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z139">
+        <attribute name="value" type="string">["Token token=",{"data":{"environmentVariable":"C1428266-5FCB-40FB-A5F6-268AF44EF58D"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\n"]</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Authorization</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z140"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z140">
+        <attribute name="uuid" type="string">459404A9-572C-4EFB-B2CC-A4B67DD0F7AD</attribute>
+        <attribute name="url" type="string">http://localhost:3000/users/pets</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">POST</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"pet\\":{\\"name\\":\\"Huey\\",\\"image\\":\\"http:\\\\\\/\\\\\\/www.pets4homes.co.uk\\\\\\/images\\\\\\/articles\\\\\\/2339\\\\\\/large\\\\\\/the-genetics-of-the-rhodesian-ridgeback-dogs-ridge-5476f97a0ce46.jpg\\",\\"about\\":\\"Lion Killer dog\\",\\"color\\":\\"brown\\",\\"is_trained\\":true,\\"race_id\\":1}}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">my pets Duplicate</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z134"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z139 z141"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z141">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z140"></relationship>
     </object>
 </database>

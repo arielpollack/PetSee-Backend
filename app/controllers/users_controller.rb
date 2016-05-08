@@ -1,25 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate
 
-  # GET /user
+  # GET /users
   def index
+    @with_token = true
   end
 
   # GET /users/1
   def show
-  end
-
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        render
-      else
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /user

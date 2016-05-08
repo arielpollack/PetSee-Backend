@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     request.format = :json
   end
 
+  def render_error(error, status = :unprocessable_entity)
+    render :json => {:error => error}, :status => status
+  end
+
   def render_errors(errors)
     render :json => {:has_erors => true, :errors => errors}, :status => :unprocessable_entity
   end

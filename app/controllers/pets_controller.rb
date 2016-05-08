@@ -9,6 +9,7 @@ class PetsController < ApplicationController
 	def create
 		p = pet_params
 		p[:owner_id] = @current_user.id
+		render_error "race not defined" and return if p[:race_id].nil?
 		pet = Pet.new(p)
 		if pet.save
 			render 'pets/_pet', :locals => {:pet => pet}
@@ -18,7 +19,9 @@ class PetsController < ApplicationController
 	end
 
 	def update 
-		pet = Pet.update(pet_params)
+		pet = Pet.where(id: pet_params[:id])
+		render_error "pet not found" and return if pet.nil?
+		pet.update(pet_params)
 		if pet.save
 			render 'pets/_pet', :locals => {:pet => pet}
 		else

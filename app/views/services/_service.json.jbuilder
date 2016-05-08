@@ -1,8 +1,6 @@
-json.cache! service do
-    json.extract! service, :id, :created_at, :updated_at, :time_start, :time_end, :status, :type
-    json.pet do
-        json.partial! 'pets/pet', :pet => service.pet
-    end
+json.extract! service, :id, :created_at, :updated_at, :time_start, :time_end, :status, :type
+json.pet do
+    json.partial! 'pets/pet', :pet => service.pet
 end
 
 if @with_client

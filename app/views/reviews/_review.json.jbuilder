@@ -1,6 +1,4 @@
-json.cache! ['v1', review] do
-    json.extract! review, :id, :rate, :feedback, :created_at, :updated_at
-end
+json.extract! review, :id, :rate, :feedback, :created_at, :updated_at
 
 if @with_user
     json.user do

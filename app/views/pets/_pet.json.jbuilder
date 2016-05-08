@@ -1,4 +1,4 @@
-json.cache! ['v1', pet] do
-    json.extract! pet, :name, :id, :color, :about, :image
-    json.race pet.race.name
-end
+json.extract! pet, :name, :id, :color, :about, :image, :is_trained
+json.race do
+	json.partial! 'races/race', :race => pet.race
+end 

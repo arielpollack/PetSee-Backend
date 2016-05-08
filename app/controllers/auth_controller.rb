@@ -33,9 +33,6 @@ class AuthController < ApplicationController
 	end
 
 	private 
-	def render_error(error, status = :unprocessable_entity)
-		render :json => {:error => error}, :status => status
-	end
 	def user_with_email(email)
 		User.find_by(email: email.downcase)
 	end
