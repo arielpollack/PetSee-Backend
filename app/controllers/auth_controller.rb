@@ -32,6 +32,10 @@ class AuthController < ApplicationController
 		render :json => {:email_exist => !user_with_email(params[:email]).nil?}
 	end
 
+	def catch_error
+		render :json => {:error => 'route not exist'}, :status => :not_found
+	end
+
 	private 
 	def user_with_email(email)
 		User.find_by(email: email.downcase)
