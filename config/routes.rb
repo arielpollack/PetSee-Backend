@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope format: false do
-    resources :users, param: :user_id, only: [:index] do
+    resources :users, param: :user_id, only: [:index, :show] do
       member do
         resources :pets, only: [:index]
         resources :reviews, only: [:index, :create]
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    get 'users/:id' => 'users#show'
 
     resources :services, param: :service_id, except: [:new, :edit, :show] do
         get :requests, on: :member

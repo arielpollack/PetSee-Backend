@@ -1,9 +1,10 @@
-class PetsController < ApplicationController
+	class PetsController < ApplicationController
 	before_action :authenticate
 
 	def index
 		user_id = params[:user_id] || @current_user.id
 		@pets = Pet.includes(:race).where(owner_id: user_id)
+#   @pets = Pet.all
 	end
 
 	def create
