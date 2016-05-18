@@ -4,16 +4,17 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @with_token = true
-
   end
 
   # GET /users/:user_id
   def show
-    @with_token = true
-    @users = User.limit(params[:user_id])
-    userById = (params[:user_id]).to_i - 1
-    @selected_user = @users[userById]
-#   @current_user = User.find_by(email: 'yanir@asd.com')
+    render :json => User.find(params[:user_id])
+  end
+
+  # GET users/all
+  # return all the users
+  def showAllUsers
+    render :json => User.all
   end
 
   # PATCH/PUT /user

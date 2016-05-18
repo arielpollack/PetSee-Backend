@@ -30,6 +30,14 @@
 		end
 	end
 
+	# GET /pets/all
+	# Get all the pets
+
+	def showAllPets
+		render :json => Pet.all
+
+	end
+
 	private
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params

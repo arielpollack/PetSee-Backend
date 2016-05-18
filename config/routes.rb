@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'users/all' => 'users#showAllUsers'
+
+  get 'pets/all' => 'pets#showAllPets'
+
+
   scope format: false do
     resources :users, param: :user_id, only: [:index, :show] do
       member do
@@ -15,7 +20,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'users/:id' => 'users#show'
+
+
 
     resources :services, param: :service_id, except: [:new, :edit, :show] do
         get :requests, on: :member
