@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  # ---------------------- TESTING --------------------------------------------------
+  # TODO: move this routes to some scope (inside users resources / pets resources). don't add routes with no context
   get 'users/all' => 'users#showAllUsers'
 
   get 'pets/all' => 'pets#showAllPets'
-
+  # ---------------------------------------------------------------------------------
 
   scope format: false do
     resources :users, param: :user_id, only: [:index, :show] do
@@ -19,9 +21,6 @@ Rails.application.routes.draw do
         end
       end
     end
-
-
-
 
     resources :services, param: :service_id, except: [:new, :edit, :show] do
         get :requests, on: :member
