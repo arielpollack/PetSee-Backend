@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate
+  # before_action :authenticate
 
   # GET /users
   def index
@@ -13,8 +13,9 @@ class UsersController < ApplicationController
 
   # GET users/all
   # return all the users
-  def showAllUsers
-    render :json => User.all
+  def all
+    #render :json => User.all
+    @users = User.all
   end
 
   # PATCH/PUT /user
