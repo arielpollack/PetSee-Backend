@@ -1,9 +1,10 @@
-class PetsController < ApplicationController
-	before_action :authenticate
+	class PetsController < ApplicationController
+#	before_action :authenticate
 
 	def index
 		user_id = params[:user_id] || @current_user.id
 		@pets = Pet.includes(:race).where(owner_id: user_id)
+#	  @pets = Pet.all
 	end
 
 	def create
@@ -27,6 +28,14 @@ class PetsController < ApplicationController
 		else
 			render :json => {:has_erors => true, :errors => pet.errors}, :status => :unprocessable_entity
 		end
+	end
+
+	# GET /pets/all
+	# Get all the pets
+
+	def showAllPets
+		render :json => Pet.all
+
 	end
 
 	private

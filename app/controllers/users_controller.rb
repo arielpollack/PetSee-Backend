@@ -1,13 +1,21 @@
 class UsersController < ApplicationController
-  before_action :authenticate
+  # before_action :authenticate
 
   # GET /users
   def index
     @with_token = true
   end
 
-  # GET /users/1
+  # GET /users/:user_id
   def show
+    render :json => User.find(params[:user_id])
+  end
+
+  # GET users/all
+  # return all the users
+  def all
+    #render :json => User.all
+    @users = User.all
   end
 
   # PATCH/PUT /user
