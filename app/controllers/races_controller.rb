@@ -1,5 +1,5 @@
 class RacesController < ApplicationController
-#	before_action :authenticate
+	before_action :authenticate
 
 	def index
 		query = params[:query] || ""

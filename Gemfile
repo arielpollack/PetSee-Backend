@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dalli'
 
+gem 'cloudinary'
+
 # Use puma for deployment
 # gem 'puma'
 

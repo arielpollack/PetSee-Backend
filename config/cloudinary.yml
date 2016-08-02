@@ -1,0 +1,18 @@
+development:
+  cloud_name: petsee
+  api_key: '834152315867517'
+  api_secret: bHoNn2TaeKXDg74cbS-rZQ8bNaQ
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: petsee
+  api_key: '834152315867517'
+  api_secret: bHoNn2TaeKXDg74cbS-rZQ8bNaQ
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: petsee
+  api_key: '834152315867517'
+  api_secret: bHoNn2TaeKXDg74cbS-rZQ8bNaQ
+  enhance_image_tag: true
+  static_image_support: false

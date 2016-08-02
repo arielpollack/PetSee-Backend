@@ -1,5 +1,5 @@
 	class PetsController < ApplicationController
-#	before_action :authenticate
+	before_action :authenticate
 
 	def index
 		user_id = params[:user_id] || @current_user.id
@@ -11,11 +11,38 @@
 		p = pet_params
 		p[:owner_id] = @current_user.id
 		render_error "race not defined" and return if p[:race_id].nil?
+
+		
 		pet = Pet.new(p)
 		if pet.save
 			render 'pets/_pet', :locals => {:pet => pet}
 		else
 			render :json => {:has_erors => true, :errors => pet.errors}, :status => :unprocessable_entity
+		end
+	end
+
+	def upload_image
+		base64Image = params[:image]
+		unless base64Image.nil?
+			begin
+				base64Image.gsub("\u0000", '')
+				image = Base64.decode64(base64Image)
+				file = Tempfile.new(['temp', '.jpg'])
+				file.binmode
+				file.write image
+				file.rewind
+				image_data = Cloudinary::Uploader.upload(file)
+				file.close
+
+				image_url = image_data["url"]
+				# p[:image] = image_url
+
+				render :json => {:url => image_url}
+			ensure
+				file.unlink
+			end
+		else
+			render :json => {:error => "no image"}, :status => :unprocessable_entity
 		end
 	end
 
