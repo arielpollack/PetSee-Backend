@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     end
 
     resources :services, param: :service_id, except: [:new, :edit, :show] do
-        get :requests, on: :member
+        member do
+          get :requests
+          post :requests, action: :add_request # for adding a request to a service provider
+        end
     end
 
     resources :races, only: [:index, :create]

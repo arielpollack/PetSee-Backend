@@ -20,12 +20,12 @@ milky = Pet.create({name: "Milky", race: pincher, color: "black", owner: ariel})
 bella = Pet.create({name: "Bella", race: italian, color: "brown", owner: coral})
 
 service = Service.create({client: ariel, pet: milky, type: "dogwalk"})
-ServiceRequest.create({service: service, service_provider: yossi, status: "pending"})
-ServiceRequest.create({service: service, service_provider: dani, status: "pending"})
-ServiceRequest.create({service: service, service_provider: yanir, status: "pending"})
+ServiceRequest.create({service: service, service_provider: yossi})
+ServiceRequest.create({service: service, service_provider: dani})
+ServiceRequest.create({service: service, service_provider: yanir})
 service = Service.create({client: coral, pet: bella, type: "dogsit"})
-ServiceRequest.create({service: service, service_provider: yossi, status: "pending"})
-ServiceRequest.create({service: service, service_provider: yanir, status: "pending"})
+ServiceRequest.create({service: service, service_provider: yossi})
+ServiceRequest.create({service: service, service_provider: yanir})
 
 Review.create({rate: 4, user: ariel, writer: coral, feedback: "Nice person"});
 Review.create({rate: 3, user: ariel, writer: dani, feedback: "cool person"});

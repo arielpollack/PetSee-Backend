@@ -68,6 +68,6 @@
 	private
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :race_id, :color, :about, :is_trained, :image, :birthday)
+      params.require(:pet).permit(:name, :race_id, :race, :color, :about, :is_trained, :image, :birthday)
     end
 end

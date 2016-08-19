@@ -6,8 +6,8 @@ class CreateServices < ActiveRecord::Migration
       t.references :service_provider, index: true, foreign_key: true
       t.datetime :time_start
       t.datetime :time_end
-      t.string :status
-      t.string :type
+      t.integer :status, default: 0, null: false
+      t.integer :type, null: false
 
       t.timestamps null: false
     end
