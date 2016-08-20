@@ -1,4 +1,8 @@
 json.extract! service, :id, :created_at, :updated_at, :time_start, :time_end, :status, :type
+
+json.time_start service.time_start.to_i
+json.time_end service.time_end.to_i
+
 json.pet do
     json.partial! 'pets/pet', :pet => service.pet
 end
