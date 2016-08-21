@@ -14,11 +14,14 @@
 ActiveRecord::Schema.define(version: 20160423165206) do
 
   create_table "locations", force: :cascade do |t|
+    t.integer  "service_id"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "locations", ["service_id"], name: "index_locations_on_service_id"
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"

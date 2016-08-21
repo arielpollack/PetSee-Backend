@@ -34,9 +34,32 @@ class ServicesController < ApplicationController
 
     def add_request
         render_error "service provider id not found" and return unless provider_id = params[:service_provider_id]
-        render error "service provider with id '#{provider_id}' not exist" and return unless provider = ServiceProvider.find_by(id: provider_id)
+        render_error "service provider with id '#{provider_id}' not exist" and return unless provider = ServiceProvider.find_by(id: provider_id)
 
         request = ServiceRequest.new({ :service_id => params[:service_id], :service_provider_id => provider_id })
+    end
+
+    def add_location
+        render_error "service id not found" and return unless service_id = params[:service_id]
+        render_error "service with id #{service_id} not found" and return unless service = Service.find_by(id: service_id)
+        render_error "location must have latitude" and return unless latitude = params[:latitude]
+        render_error "location must have longitude" and return unless longitude = params[:longitude]
+        
+        
+        location = Location.new({ latitude: latitude, longitude: longitude, service_id: service_id })
+
+        if location.save
+            render :json => {}, :status => 200
+        else
+            render :json => { :error => "couldn't save" }, :status => 400
+        end
+    end
+
+    def locations
+        render_error "service id not found" and return unless service_id = params[:service_id]
+        render_error "service with id #{service_id} not found" and return unless service = Service.find_by(id: service_id)
+
+        @locations = service.locations
     end
 
 end

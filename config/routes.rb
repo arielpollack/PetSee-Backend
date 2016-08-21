@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         member do
           get :requests
           post :requests, action: :add_request # for adding a request to a service provider
+          post :add_location
+          get :locations
         end
     end
 
