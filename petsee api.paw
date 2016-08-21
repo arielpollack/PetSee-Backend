@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>EF54656C-84A2-4402-95AC-C6E9C6702A00</UUID>
-        <nextObjectID>154</nextObjectID>
+        <nextObjectID>159</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -80,8 +80,8 @@
         <attribute name="uuid" type="string">AA815C3B-C23D-4F60-9E45-0E0EF026A75A</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Default Domain</attribute>
-        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z107"></relationship>
-        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z110"></relationship>
+        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z155 z107"></relationship>
+        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z157 z110"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z104">
         <attribute name="value" type="string">["Token token=",{"data":{"environmentVariable":"C1428266-5FCB-40FB-A5F6-268AF44EF58D"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\n"]</attribute>
@@ -122,9 +122,9 @@
     <object type="LMENVIRONMENT" id="z107">
         <attribute name="uuid" type="string">6E5EEFB5-058D-4902-A1C6-DC9472E458A9</attribute>
         <attribute name="order" type="int64">0</attribute>
-        <attribute name="name" type="string">Default Environment</attribute>
+        <attribute name="name" type="string">local</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z103"></relationship>
-        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z116"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z159 z116"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z108">
         <attribute name="value" type="string"></attribute>
@@ -157,7 +157,7 @@
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">token</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z103"></relationship>
-        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z116"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z116 z156"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z111">
         <attribute name="value" type="string"></attribute>
@@ -565,7 +565,7 @@
     </object>
     <object type="LMREQUEST" id="z147">
         <attribute name="uuid" type="string">60A7DD0C-BADC-4647-89F6-8116A7C07B3C</attribute>
-        <attribute name="url" type="string">http://localhost:3000/services/1/locations</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"0C91E5C6-772C-4F49-BF49-BF5B71175364"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/services\\/1\\/locations"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -654,5 +654,34 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z151"></relationship>
+    </object>
+    <object type="LMENVIRONMENT" id="z155">
+        <attribute name="uuid" type="string">DA2EA65D-7BBF-465B-B869-5B493531D637</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">production</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z103"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z156 z158"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z156">
+        <attribute name="value" type="string">718d51bbbdc242458e171d37c794fa9d</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z155"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z110"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLE" id="z157">
+        <attribute name="uuid" type="string">0C91E5C6-772C-4F49-BF49-BF5B71175364</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">base_url</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z103"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z159 z158"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z158">
+        <attribute name="value" type="string">petsee.herokuapp.com</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z155"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z157"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z159">
+        <attribute name="value" type="string">localhost:3000</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z107"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z157"></relationship>
     </object>
 </database>
