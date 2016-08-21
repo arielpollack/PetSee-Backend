@@ -49,7 +49,7 @@ class ServicesController < ApplicationController
         location = Location.new({ latitude: latitude, longitude: longitude, service_id: service_id })
 
         if location.save
-            render :json => {}, :status => 200
+            render 'services/_location', locals: {:location => location}
         else
             render :json => { :error => "couldn't save" }, :status => 400
         end
