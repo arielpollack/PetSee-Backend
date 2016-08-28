@@ -17,6 +17,29 @@ class ReviewsController < ApplicationController
     render 'reviews/index'
   end
 
+  # Create new review
+  def create
+    r = review_params
+    render_error "rate must be between 1 to 5" and return if (1..5).include? r[:rate]
+    render_error "feedback must contain text" and return if r[:feedback].nil?
+
+    r[:user_id] = params[:user_id]
+    r[:writer_id] = @current_user.id
+
+    review = Review.new(r)
+
+    @with_user = false
+    @with_writer = true
+
+    if review.save
+      render 'reviews/_review', :locals => {:review => review}
+    else
+      render :json => {:has_erors => true, :errors => review.errors}, :status => :unprocessable_entity
+    end
+
+  end
+
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
