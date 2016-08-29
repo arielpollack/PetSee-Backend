@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   def index
     last_index = params[:last_index] || 0
+    Rails.logger.info "Last index is: #{last_index}"
     @reviews = Review.includes(:writer).where(user_id: params[:user_id]).where("id > ?", last_index).limit(20)
     @with_user = false
     @with_writer = true
@@ -20,8 +21,8 @@ class ReviewsController < ApplicationController
   # Create new review
   def create
     r = review_params
-    render_error "rate must be between 1 to 5" and return if (1..5).include? r[:rate]
-    render_error "feedback must contain text" and return if r[:feedback].nil?
+    render_error "rate must be between 1 to 5" and return if not (1..5).include? r[:rate].to_i
+    render_error "feedback must contain text" and return if r[:feedback].nil? || r[:feedback] == ""
 
     r[:user_id] = params[:user_id]
     r[:writer_id] = @current_user.id
