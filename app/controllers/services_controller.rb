@@ -13,8 +13,36 @@ class ServicesController < ApplicationController
         end
     end
 
-    def create
 
+    # Create new service by client (3-way handshake - part #1)
+    def create
+        if @current_user.wont_be_instance_of(Client)
+            render :json => {:error => 'you are not a client'}, :status => :forbidden
+        else
+            pet_id = Pet.select(id).where(id: params[:pet_id])
+            render_error "pet does not exist" and return if pet_id.nil?
+            pet_client_id = Pet.select("client_id").where(id: params[:pet_id])
+            render_error "this is not your pet" and return if pet_client_id.wont_equal @current_user.id
+
+            newService[:client_id] = @current_user.id
+            newService[:pet_id] = params[:pet_id]
+            newService[:status] = pending
+            newService[:created_at] = DateTime.now
+            newService[:updated_at] = DateTime.now
+            newService[:type] = params[:type]
+            newService[:description] = params[:description]
+
+            @with_client = true
+            @with_service_provider = false
+
+            service = Service.new(newService)
+            if service.save
+                render 'service/_service', :locals => {:service => service}
+            else
+                render :json => {:has_erors => true, :errors => service.errors}, :status => :unprocessable_entity
+            end
+
+        end
     end
 
     def requests

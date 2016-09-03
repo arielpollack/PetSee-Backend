@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160423165206) do
     t.integer  "service_provider_id"
     t.datetime "time_start"
     t.datetime "time_end"
+    t.string   "description"
     t.string   "status"
     t.string   "type"
     t.datetime "created_at",          null: false
