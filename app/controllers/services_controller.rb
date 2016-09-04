@@ -57,7 +57,7 @@ class ServicesController < ApplicationController
 
     # return a list of relevant service providers for a specific service
     def service_providers_for_service
-
+        @providers = ServiceProvider.all
     end
 
     def add_request
@@ -65,6 +65,11 @@ class ServicesController < ApplicationController
         render_error "service provider with id '#{provider_id}' not exist" and return unless provider = ServiceProvider.find_by(id: provider_id)
 
         request = ServiceRequest.new({ :service_id => params[:service_id], :service_provider_id => provider_id })
+        if request.save
+            render 'services/_request', locals: {:request => request}
+        else
+            render_error "couldn't save"
+        end
     end
 
     def add_location

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
           post :requests, action: :add_request # for adding a request to a service provider
           post :add_location
           get :locations
+          get :service_providers_for_service # a list of available service providers (return all for now)
         end
     end
 
