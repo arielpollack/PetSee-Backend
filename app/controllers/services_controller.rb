@@ -95,4 +95,33 @@ class ServicesController < ApplicationController
         @locations = service.locations
     end
 
+    def approve
+        request_id = params[:request_id]
+        # check if params exist
+        request = ServiceRequest.find_by_id(request_id)
+        # check if request exist
+
+        # check if i am the service provider of the request
+
+        request.approved!
+
+        if request.save
+            render :json => {}, :status => 200
+        else
+            render_error "couldn't save"
+        end
+    end
+
+    def deny
+
+    end
+
 end
+
+
+
+
+
+
+
+
