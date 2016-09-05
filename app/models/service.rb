@@ -5,7 +5,7 @@ class Service < ActiveRecord::Base
 	has_many :service_requests
 	has_many :locations
 
-	enum status: [ :pending, :started, :ended ]
+	enum status: [ :pending, :confirmed, :started, :ended ]
 
 	enum type: [ :dogsit, :dogwalk ]
 
