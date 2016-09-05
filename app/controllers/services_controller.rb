@@ -116,6 +116,10 @@ class ServicesController < ApplicationController
 
     end
 
+    def cancel
+        
+    end
+
     def choose_service_provider
         request_id = params[:request_id]
 

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
           put :deny
 
           put :choose_service_provider
+
+          delete :cancel
         end
     end
 
