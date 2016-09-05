@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
           put :approve
           put :deny
+
+          put :choose_service_provider
         end
     end
 

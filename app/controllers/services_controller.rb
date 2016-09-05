@@ -116,12 +116,12 @@ class ServicesController < ApplicationController
 
     end
 
+    def choose_service_provider
+        request_id = params[:request_id]
+
+        # approve this one, deny all others
+
+    end
+
+
 end
-
-
-
-
-
-
-
-
