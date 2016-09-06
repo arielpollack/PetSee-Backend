@@ -57,7 +57,12 @@ class ServicesController < ApplicationController
 
     # return a list of relevant service providers for a specific service
     def service_providers_for_service
-        @providers = ServiceProvider.all
+        #@providers = ServiceProvider.all
+        last_index = params[:last_index] || 0
+        Rails.logger.info "Last index is: #{last_index}"
+        @reviews = Review.includes(:writer).where(user_id: params[:user_id]).where("id > ?", last_index).limit(20)
+
+        @providers = ServiceProvider.order(:rating).where("id > ?", last_index).limit(20)
     end
 
     def add_request
