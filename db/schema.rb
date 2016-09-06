@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423165206) do
+ActiveRecord::Schema.define(version: 20160906151627) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "service_id"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20160423165206) do
     t.integer  "service_provider_id"
     t.datetime "time_start"
     t.datetime "time_end"
-    t.string   "description"
     t.string   "status"
     t.string   "type"
     t.datetime "created_at",          null: false
@@ -117,7 +116,7 @@ ActiveRecord::Schema.define(version: 20160423165206) do
     t.integer  "location_id"
     t.text     "about",        limit: 255
     t.string   "image"
-    t.decimal  "rating",                   precision: 2, scale: 2, default: 0.0
+    t.decimal  "rating",                   precision: 2, scale: 1, default: 0.0
     t.integer  "rating_count",                                     default: 0
     t.datetime "created_at",                                                     null: false
     t.datetime "updated_at",                                                     null: false
