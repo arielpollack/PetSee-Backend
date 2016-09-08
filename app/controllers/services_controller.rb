@@ -1,7 +1,7 @@
 require 'date'
 
 class ServicesController < ApplicationController
-  before_action :authenticate
+    before_action :authenticate
 
   def index
     if @current_user.instance_of?(Client)
@@ -55,14 +55,13 @@ class ServicesController < ApplicationController
 
   end
 
-  # Return a list of relevant service providers for a specific service
-  def available_service_providers
-    #@providers = ServiceProvider.all
-    last_index = params[:last_index] || 0
-    Rails.logger.info "Last index is: #{last_index}"
+    # return a list of relevant service providers for a specific service
+    def available_service_providers
+        last_index = params[:last_index] || 0
+        Rails.logger.info "Last index is: #{last_index}"
 
-    @providers = ServiceProvider.order(:rating).where("id > ?", last_index).limit(20)
-  end
+        @providers = ServiceProvider.all.order(rating: :asc).order(rating_count: :asc).where("id > ?", last_index).limit(20)
+    end
 
   def add_request
     render_error "service provider id not found" and return unless (provider_id = params[:service_provider_id])
