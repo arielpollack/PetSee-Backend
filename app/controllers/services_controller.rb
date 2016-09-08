@@ -26,7 +26,7 @@ class ServicesController < ApplicationController
     pet = Pet.find_by_id(params[:pet_id])
     render_error "pet does not exist" and return if pet.nil?
     render_error "this is not your pet" and return if pet.owner.id != @current_user.id
-    render_error "location is missing" and return unless params[:lat].exist? and params[:lng].exist?
+    render_error "location is missing" and return unless params[:lat].present? and params[:lng].present?
 
     new_service = {}
     new_service[:client_id] = @current_user.id
