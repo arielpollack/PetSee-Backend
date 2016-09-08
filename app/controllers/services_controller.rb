@@ -26,6 +26,7 @@ class ServicesController < ApplicationController
     pet = Pet.find_by_id(params[:pet_id])
     render_error "pet does not exist" and return if pet.nil?
     render_error "this is not your pet" and return if pet.owner.id != @current_user.id
+    render_error "location is missing" and return unless params[:lat].exist? and params[:lng].exist?
 
     new_service = {}
     new_service[:client_id] = @current_user.id
@@ -33,6 +34,11 @@ class ServicesController < ApplicationController
     new_service[:type] = params[:type]
     new_service[:time_start] = Time.at(params[:time_start].to_i).to_datetime
     new_service[:time_end] = Time.at(params[:time_end].to_i).to_datetime
+
+    # generate location for service
+    location = Location.new({:latitude => params[:lat], :longitude => params[:lng]})
+    render_error "couldn't save location" and return unless location.save
+    new_service[:location_id] = location.id
 
     @with_client = true
     @with_service_provider = false
