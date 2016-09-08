@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
     r[:writer_id] = @current_user.id
 
     review = Review.new(r)
-
     @with_user = false
     @with_writer = true
 
