@@ -54,12 +54,22 @@ class ServicesController < ApplicationController
   def requests
     service = Service.find_by(id: params[:service_id])
     if service.present?
-      @requests = service.service_requests
+        @with_provider = true
+        @requests = service.service_requests
     else
       render :json => {:error => 'service not found'}, :status => :not_found
     end
 
   end
+
+    def my_requests
+        render_error "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
+
+        @with_client = true
+        @with_service = true
+        @requests = @current_user.service_requests
+        render "services/requests"
+    end
 
     # return a list of relevant service providers for a specific service
     def available_service_providers

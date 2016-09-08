@@ -8,8 +8,10 @@ class UsersController < ApplicationController
 
   # GET /users/:user_id
   def show
-    render :json => User.find(params[:user_id])
-  K  end
+    user = User.find_by_id(params[:user_id])
+    render_error "user not found" and return if user.nil?
+    render 'users/_user', :locals => {:user => user} 
+  end
 
   # GET users/all
   # return all the users
