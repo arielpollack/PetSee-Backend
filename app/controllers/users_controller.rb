@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   # GET /users/:user_id
   def show
     render :json => User.find(params[:user_id])
-  end
+  K  end
 
   # GET users/all
   # return all the users
@@ -18,20 +18,24 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
+
   # PATCH/PUT /user
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        render
+    # respond_to do |format|
+      @current_user.update(user_params)
+      if @current_user.save
+        render 'users/_user', :locals => {:user => @current_user}
       else
         render :json => {:has_erors=>"true", :errors => @user.errors, :user => @user}, :status => :unprocessable_entity
       end
-    end
+    # end
   end
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :name)
+      params.require(:user).permit(:email, :password, :name, :image, :about)
     end
 end
+

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'users/all' => 'users#all'
 
   get 'pets/all' => 'pets#showAllPets'
+
+  put 'users' => 'users#update'
+  patch 'users' => 'users#update'
+
   # ---------------------------------------------------------------------------------
 
   scope format: false do
