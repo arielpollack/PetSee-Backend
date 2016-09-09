@@ -77,8 +77,8 @@ class ServicesController < ApplicationController
 
         @with_client = true
         @with_service = true
-        @requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
-        render "services/requests"
+        requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
+        render "services/requests", :locals => {:requests => requests}
     end
 
 
