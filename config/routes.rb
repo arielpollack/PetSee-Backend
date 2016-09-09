@@ -29,14 +29,14 @@ Rails.application.routes.draw do
     resources :services, param: :service_id, except: [:new, :edit, :show] do
         member do
           get :requests
-          post :requests, action: :add_request # for adding a request to a service provider
-          post :add_location
           get :locations
           get :available_service_providers # a list of available service providers (return all for now)
-
+          post :requests, action: :add_request # for adding a request to a service provider
+          post :add_location
           put :approve
           put :deny
-
+          put :start
+          put :end
           put :choose_service_provider
 
           delete :cancel
@@ -46,10 +46,10 @@ Rails.application.routes.draw do
     resources :races, only: [:index, :create]
 
     resources :auth, only: [] do 
-      collection do 
+      collection do
+        get :is_email_exist
         post :login
         post :signup
-        get :is_email_exist
       end
     end
   end

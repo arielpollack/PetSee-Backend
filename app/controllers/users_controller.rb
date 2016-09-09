@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         render
       else
-        render :json => {:has_erors=>"true", :errors => @user.errors, :user => @user}, :status => :unprocessable_entity
+        render :json => {:has_errors=>"true", :errors => @user.errors, :user => @user}, :status => :unprocessable_entity
       end
     end
   end

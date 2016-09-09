@@ -1,7 +1,7 @@
 require 'date'
 
 class ServicesController < ApplicationController
-    before_action :authenticate
+  before_action :authenticate
 
   def index
     if @current_user.instance_of?(Client)
@@ -18,25 +18,31 @@ class ServicesController < ApplicationController
 
   # Create new service by client (3-way handshake - part #1)
   def create
-    unless @current_user.instance_of?(Client)
-      render :json => {:error => 'you are not a client'}, :status => :forbidden
-      return
-    end
+    # Validate permissions
+    return unless permitted_for_user_type?(Client)
 
-    pet = Pet.find_by_id(params[:pet_id])
-    render_error "pet does not exist" and return if pet.nil?
-    render_error "this is not your pet" and return if pet.owner.id != @current_user.id
+    # Extract params
+    render_not_found 'missing pet_id' and return false unless (pet_id = params[:pet_id])
+    render_not_found "couldn't find pet with id #{pet_id}" and return false unless (Pet.find_by_id(pet_id).present?)
+    render_not_found 'missing time_start' and return false unless (time_start = params[:time_start])
+    render_not_found 'missing time_end' and return false unless (time_end = params[:time_end])
 
+    # Validate params
+    render_bad_request 'start time is after end time' and return false if time_start.to_i > time_end.to_i
+    render_forbidden "this is not your pet" and return if pet.owner.id != @current_user.id
+
+    # Create new service object
     new_service = {}
     new_service[:client_id] = @current_user.id
     new_service[:pet_id] = params[:pet_id]
     new_service[:type] = params[:type]
-    new_service[:time_start] = Time.at(params[:time_start].to_i).to_datetime
-    new_service[:time_end] = Time.at(params[:time_end].to_i).to_datetime
+    new_service[:time_start] = parse_time(time_start)
+    new_service[:time_end] = parse_time(time_end)
 
     @with_client = true
     @with_service_provider = false
 
+    # create&save new service active record
     service = Service.new(new_service)
     if service.save
       render 'services/_service', :locals => {:service => service}
@@ -45,43 +51,43 @@ class ServicesController < ApplicationController
     end
   end
 
-  def requests
-    service = Service.find_by(id: params[:service_id])
-    if service.present?
-      @requests = service.service_requests
-    else
-      render :json => {:error => 'service not found'}, :status => :not_found
-    end
 
+  def requests
+    # Retrieve service
+    return unless get_service?
+    @requests = @service.service_requests
   end
 
-    # return a list of relevant service providers for a specific service
-    def available_service_providers
-        last_index = params[:last_index] || 0
-        Rails.logger.info "Last index is: #{last_index}"
-
-        @providers = ServiceProvider.all.order(rating: :asc).order(rating_count: :asc).where("id > ?", last_index).limit(20)
-    end
+  # return a list of relevant service providers for a specific service
+  def available_service_providers
+    last_index = params[:last_index] || 0
+    @providers = ServiceProvider.all.order(rating: :asc).order(rating_count: :asc).where("id > ?", last_index).limit(20)
+  end
 
   def add_request
-    render_error "service provider id not found" and return unless (provider_id = params[:service_provider_id])
-    render_error "service provider with id '#{provider_id}' not exist" and return unless (provider = ServiceProvider.find_by(id: provider_id))
-
-    request = ServiceRequest.new({:service_id => params[:service_id], :service_provider_id => provider_id})
-    if request.save
-      render 'services/_request', locals: {:request => request}
-    else
-      render_error "couldn't save"
-    end
+    # Validate data
+    render_not_found 'service provider id not found' and return unless (provider_id = params[:service_provider_id])
+    render_not_found "service provider with id '#{provider_id}' does not exist" and return unless (service_provider = ServiceProvider.find_by(id: provider_id))
+    render_not_found 'service id not found' and return unless (service_id = params[:service_id])
+    render_not_found "service with id '#{service_id}' does not exist" and return unless (service = Service.find_by(id: service_id))
+    # Prevent duplicate requests
+    render_forbidden "a service request had already been placed for service with id #{service_id} and service provider with id #{provider_id}" and return false unless ServiceRequest.find_by(service: service, service_provider: service_provider, client: @current_user).present?
+    # Create new request
+    request = ServiceRequest.new({:service_id => service_id, :service_provider_id => provider_id})
+    # Handle save
+    render_unprocessable_entity "couldn't save" and return false unless request.save
+    # Render successful response
+    render 'services/_request', locals: {:request => request}
   end
 
   def add_location
-    render_error "service id not found" and return unless (service_id = params[:service_id])
-    render_error "service with id #{service_id} not found" and return unless (service = Service.find_by(id: service_id))
-    render_error "location must have latitude" and return unless (latitude = params[:latitude])
-    render_error "location must have longitude" and return unless (longitude = params[:longitude])
+    # Retrieve service
+    return unless get_service?
 
-    location = Location.new({latitude: latitude, longitude: longitude, service_id: service_id})
+    render_not_found "location must have latitude" and return unless (latitude = params[:latitude])
+    render_not_found "location must have longitude" and return unless (longitude = params[:longitude])
+
+    location = Location.new({latitude: latitude, longitude: longitude, service_id: @service.id})
 
     if location.save
       render 'services/_location', locals: {:location => location}
@@ -91,96 +97,153 @@ class ServicesController < ApplicationController
   end
 
   def locations
-    render_error "service id not found" and return unless (service_id = params[:service_id])
-    render_error "service with id #{service_id} not found" and return unless (service = Service.find_by(id: service_id))
-
-    @locations = service.locations
+    return unless get_service?
+    @locations = @service.locations
   end
 
   # 3-way handshake - part #2
   def approve
-    #validate permissions
-    unless @current_user.instance_of?(ServiceProvider)
-      render :json => {:error => 'you are not a service provider'}, :status => :forbidden
-      return
-    end
-    #handle action
-    service_response(ServiceRequest.statuses[:approved])
+    set_service_request_status(ServiceProvider, ServiceRequest.statuses[:approved])
   end
 
+
   def deny
-    #validate permissions
-    unless @current_user.instance_of?(ServiceProvider)
-      render :json => {:error => 'you are not a service provider'}, :status => :forbidden
-      return
-    end
-    #handle action
-    service_response(ServiceRequest.statuses[:denied])
+    set_service_request_status(ServiceProvider, ServiceRequest.statuses[:denied])
   end
+
 
   def cancel
     # Validate permissions
-    unless @current_user.instance_of?(Client)
-      render :json => {:error => 'you are not a client'}, :status => :forbidden
-      return
-    end
-    # Retrieve service id from params
-    render_error "service id not found" and return unless (service_id = params[:service_id])
-    # Retrieve request from DB
-    render_error "service with id #{service_id} not found" and return unless (service = Service.find_by(id: service_id))
+    return unless permitted_for_user_type?(Client)
+    # Retrieve service
+    return unless get_service?
     # Validate service status
-    render_error "a service in status #{service.status} can't be canceled" and return unless (service.confirmed? || service.pending?)
+    render_forbidden "a service in status #{@service.status} can't be canceled" and return unless (@service.confirmed? || @service.pending?)
     # Delete related service requests
-    ServiceRequest.delete_all(service: service)
+    ServiceRequest.delete_all(service: @service)
     # Delete the service
-    service.delete
+    @service.delete
     # Render success
-    render :json => {}, :status => 200
+    render_success
   end
+
 
   # 3-way handshake - part #3
   def choose_service_provider
     #validate permissions
-    unless @current_user.instance_of?(Client)
-      render :json => {:error => 'you are not a client'}, :status => :forbidden
-      return
-    end
-    # Retrieve request_id from params
-    render_error "service request id not found" and return unless (request_id = params[:request_id])
-    # Retrieve request from DB
-    render_error "service request with id #{request_id} not found" and return unless (request = ServiceRequest.find_by(id: request_id))
+    return unless permitted_for_user_type?(Client)
+    # Retrieve service request
+    return unless get_service_request?
     # Validate service request is approved
-    render_error "service request with id #{request_id} was not approved by service provider with id #{request.service_provider.id}" and return unless (request.approved?)
+    render_forbidden "service request with id #{@service_request.id} was not approved by service provider with id #{@service_request.service_provider.id}" and return unless (@service_request.approved?)
     # Retrieve service from DB
-    render_error "service with id #{request.service.id} not found" and return unless (service = request.service)
+    render_not_found "service with id #{service.id} not found" and return unless (service = @service_request.service)
+    # Set service provider
+    service.service_provider = @service_request.service_provider
     # Confirm service
-    service.status = Service.statuses[:confirmed]
+    service.confirmed!
     #handle save
-    if service.save
-      render :json => {}, :status => 200
-    else
-      render_error "couldn't save"
-    end
+    render_unprocessable_entity "couldn't save" and return false unless service.save
     # Delete all other related requests
     ServiceRequest.delete_all(service: service)
+    # Render success
+    render_success
   end
 
+
+  def start
+    # Set status pre-requisites
+    return unless service_pre_requisites_validated?(ServiceProvider)
+    # Start service
+    @service.time_start = Time.now.utc
+    # Set status
+    @service.status = Service.statuses[:started]
+    # Handle save
+    render_unprocessable_entity "couldn't save" and return false unless @service.save
+    # Render success
+    render_success
+  end
+
+
+  def end
+    # Set status pre-requisites
+    return unless service_pre_requisites_validated?(ServiceProvider)
+    # End service
+    @service.time_end = Time.now.utc
+    # Set status
+    @service.status = Service.statuses[:ended]
+    # Handle save
+    render_unprocessable_entity "couldn't save" and return false unless @service.save
+    # Render success
+    render_success
+  end
+
+
   private
-  def service_response(response)
-    #retrieve request_id from params
-    render_error "service request id not found" and return unless (request_id = params[:request_id])
-    #retrieve request from DB
-    render_error "service request with id #{request_id} not found" and return unless (request = ServiceRequest.find_by(id: request_id))
-    #validate service_provider
-    service_provider = request.service_provider
-    render_error "current service provider id #{@current_user.id} doesn't match request service provider id #{service_provider.id}" and return unless (service_provider.id == @current_user.id)
-    #update status
-    request.status = response
-    #handle save
-    if request.save
-      render :json => {}, :status => 200
-    else
-      render_error "couldn't save"
-    end
+  def service_pre_requisites_validated?(user_type)
+    # Validate permissions
+    return false unless permitted_for_user_type?(user_type)
+    # Retrieve service request
+    return false unless get_service?
+    # Validate service provider is me
+    return false unless service_provider_match?(@service.service_provider)
+    true
+  end
+
+
+  private
+  def set_service_request_status(user_type, new_status)
+    # Validate permissions
+    return false unless permitted_for_user_type?(user_type)
+    # Retrieve service request
+    return false unless get_service_request?
+    # Validate service provider is me
+    return false unless service_provider_match?(@service_request.service_provider)
+    # Update status
+    @service_request.status = new_status
+    # Handle save
+    render_unprocessable_entity "couldn't save" and return false unless @service_request.save
+    # Render success
+    render_success
+  end
+
+
+  private
+  def get_service?
+    # Retrieve service id from params
+    render_not_found "service id not found" and return false unless (service_id = params[:service_id])
+    # Retrieve request from DB
+    render_not_found "service with id #{service_id} not found" and return false unless (@service = Service.find_by(id: service_id))
+    true
+  end
+
+
+  private
+  def get_service_request?
+    # Retrieve service id from params
+    render_not_found "service id not found" and return false unless (request_id = params[:request_id])
+    # Retrieve request from DB
+    render_not_found "service with id #{request_id} not found" and return false unless (@service_request = ServiceRequest.find_by(id: request_id))
+    true
+  end
+
+
+  private
+  def parse_time(time)
+    Time.at(time.to_i).to_datetime
+  end
+
+
+  private
+  def permitted_for_user_type?(user_type)
+    render_forbidden "you are not a #{user_type}" and return false unless @current_user.instance_of?(user_type)
+    true
+  end
+
+
+  private
+  def service_provider_match?(service_provider)
+    render_forbidden "current service provider id #{@current_user.id} doesn't match request service provider id #{service_provider.id}" and return false unless (service_provider.id == @current_user.id)
+    true
   end
 end
