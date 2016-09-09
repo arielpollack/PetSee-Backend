@@ -26,6 +26,7 @@ class ServicesController < ApplicationController
     render_not_found "couldn't find pet with id #{pet_id}" and return false unless (Pet.find_by_id(pet_id).present?)
     render_not_found 'missing time_start' and return false unless (time_start = params[:time_start])
     render_not_found 'missing time_end' and return false unless (time_end = params[:time_end])
+    render_not_found "location is missing" and return unless params[:lat].present? and params[:lng].present?
 
     # Validate params
     render_bad_request 'start time is after end time' and return false if time_start.to_i > time_end.to_i
@@ -38,6 +39,11 @@ class ServicesController < ApplicationController
     new_service[:type] = params[:type]
     new_service[:time_start] = parse_time(time_start)
     new_service[:time_end] = parse_time(time_end)
+
+    # generate location for service
+    location = Location.new({:latitude => params[:lat], :longitude => params[:lng]})
+    render_error "couldn't save location" and return unless location.save
+    new_service[:location_id] = location.id
 
     @with_client = true
     @with_service_provider = false
@@ -55,6 +61,7 @@ class ServicesController < ApplicationController
   def requests
     # Retrieve service
     return unless get_service?
+    @with_provider = true
     @requests = @service.service_requests
   end
 
@@ -63,6 +70,17 @@ class ServicesController < ApplicationController
     last_index = params[:last_index] || 0
     @providers = ServiceProvider.all.order(rating: :asc).order(rating_count: :asc).where("id > ?", last_index).limit(20)
   end
+
+
+  def my_requests
+    render_error "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
+
+    @with_client = true
+    @with_service = true
+    @requests = @current_user.service_requests
+    render "services/requests"
+  end
+
 
   def add_request
     # Validate data

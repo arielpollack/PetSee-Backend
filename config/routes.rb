@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'users/all' => 'users#all'
 
   get 'pets/all' => 'pets#showAllPets'
+
+  put 'users' => 'users#update'
+  patch 'users' => 'users#update'
+
   # ---------------------------------------------------------------------------------
 
   scope format: false do
@@ -27,6 +31,9 @@ Rails.application.routes.draw do
     end
 
     resources :services, param: :service_id, except: [:new, :edit, :show] do
+        collection do
+          get :my_requests
+        end
         member do
           get :requests
           get :locations
