@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 20160908175559) do
   create_table "service_requests", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "service_provider_id"
-    t.integer  "status",              default: 0, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "status"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "service_requests", ["service_id"], name: "index_service_requests_on_service_id"
@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(version: 20160908175559) do
     t.integer  "service_provider_id"
     t.datetime "time_start"
     t.datetime "time_end"
-    t.integer  "status",              default: 0, null: false
-    t.integer  "type",                            null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "status"
+    t.string   "type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "location_id"
   end
 
