@@ -1,4 +1,4 @@
-json.extract! request, :id, :created_at, :updated_at, :status, :service
+json.extract! request, :id, :created_at, :updated_at, :status
 if @with_service
 	json.service do
 		json.partial! 'services/service', :service => request.service
