@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     def update
         # respond_to do |format|
         @current_user.update(user_params)
+        @with_token = true
         if @current_user.save
             render 'users/_user', :locals => {:user => @current_user}
         else

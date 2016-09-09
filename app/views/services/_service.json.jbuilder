@@ -3,8 +3,10 @@ json.extract! service, :id, :created_at, :updated_at, :status, :type, :service_p
 json.time_start service.time_start.to_i
 json.time_end service.time_end.to_i
 
-json.location do
-	json.partial! 'services/location', :location => service.location
+if service.location
+    json.location do
+        json.partial! 'services/location', :location => service.location
+    end
 end
 
 json.pet do
