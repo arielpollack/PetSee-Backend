@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     put 'users' => 'users#update'
     patch 'users' => 'users#update'
 
+    get 'reviews/:user_id/' => 'reviews#review_about_user'
     # ---------------------------------------------------------------------------------
 
     scope format: false do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
                 end
                 resources :reviews, only: [] do
                     get :index, action: :my_reviews, on: :collection # reviews written by user
+                    put action: :update_existing_review
                 end
             end
         end
@@ -59,6 +61,7 @@ Rails.application.routes.draw do
                 post :signup
             end
         end
+
     end
 
     match "*path", to: "auth#catch_error", via: :all

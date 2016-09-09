@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     # GET /users/:user_id
     def show
         user = User.find_by_id(params[:user_id])
-        render_error "user not found" and return if user.nil?
+        render_not_found "user not found" and return if user.nil?
         render 'users/_user', :locals => {:user => user}
     end
 

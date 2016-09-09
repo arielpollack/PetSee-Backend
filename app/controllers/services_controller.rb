@@ -42,7 +42,7 @@ class ServicesController < ApplicationController
 
         # generate location for service
         location = Location.new({:latitude => params[:lat], :longitude => params[:lng]})
-        render_error "couldn't save location" and return unless location.save
+        render_unprocessable_entity "couldn't save location" and return unless location.save
         new_service[:location_id] = location.id
 
         @with_client = true
