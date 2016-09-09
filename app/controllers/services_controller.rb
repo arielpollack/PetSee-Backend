@@ -76,9 +76,11 @@ class ServicesController < ApplicationController
         puts @current_user
         render_forbidden "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
 
+        puts "i am a provider"
         @with_client = true
         @with_service = true
         requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
+        puts requests
         render "services/requests", :locals => {:requests => requests}
     end
 
