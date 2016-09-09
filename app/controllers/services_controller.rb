@@ -23,7 +23,7 @@ class ServicesController < ApplicationController
 
         # Extract params
         render_not_found 'missing pet_id' and return false unless (pet_id = params[:pet_id])
-        render_not_found "couldn't find pet with id #{pet_id}" and return false unless (Pet.find_by_id(pet_id).present?)
+        render_not_found "couldn't find pet with id #{pet_id}" and return false unless (pet = Pet.find_by_id(pet_id))
         render_not_found 'missing time_start' and return false unless (time_start = params[:time_start])
         render_not_found 'missing time_end' and return false unless (time_end = params[:time_end])
         render_not_found "location is missing" and return unless params[:lat].present? and params[:lng].present?
@@ -89,12 +89,13 @@ class ServicesController < ApplicationController
         render_not_found 'service id not found' and return unless (service_id = params[:service_id])
         render_not_found "service with id '#{service_id}' does not exist" and return unless (service = Service.find_by(id: service_id))
         # Prevent duplicate requests
-        render_forbidden "a service request had already been placed for service with id #{service_id} and service provider with id #{provider_id}" and return false unless ServiceRequest.find_by(service: service, service_provider: service_provider, client: @current_user).present?
+        render_forbidden "a service request had already been placed for service with id #{service_id} and service provider with id #{provider_id}" and return false unless ServiceRequest.find_by(service: service, service_provider: service_provider).nil?
         # Create new request
         request = ServiceRequest.new({:service_id => service_id, :service_provider_id => provider_id})
         # Handle save
         render_unprocessable_entity "couldn't save" and return false unless request.save
         # Render successful response
+        @with_provider = true
         render 'services/_request', locals: {:request => request}
     end
 
