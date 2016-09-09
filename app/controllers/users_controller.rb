@@ -21,18 +21,17 @@ class UsersController < ApplicationController
     end
 
 
-
-  # PATCH/PUT /user
-  def update
-    # respond_to do |format|
-      @current_user.update(user_params)
-      if @current_user.save
-        render 'users/_user', :locals => {:user => @current_user}
-      else
-        render :json => {:has_errors=>"true", :errors => @user.errors, :user => @user}, :status => :unprocessable_entity
-      end
-    # end
-  end
+    # PATCH/PUT /user
+    def update
+        # respond_to do |format|
+        @current_user.update(user_params)
+        if @current_user.save
+            render 'users/_user', :locals => {:user => @current_user}
+        else
+            render :json => {:has_errors => "true", :errors => @user.errors, :user => @user}, :status => :unprocessable_entity
+        end
+        # end
+    end
 
     private
     # Never trust parameters from the scary internet, only allow the white list through.
