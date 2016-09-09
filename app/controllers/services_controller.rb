@@ -67,7 +67,7 @@ class ServicesController < ApplicationController
 
         @with_client = true
         @with_service = true
-        @requests = @current_user.service_requests
+        @requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
         render "services/requests"
     end
 
@@ -165,12 +165,14 @@ class ServicesController < ApplicationController
     render_error "service request id not found" and return unless (request_id = params[:request_id])
     # Retrieve request from DB
     render_error "service request with id #{request_id} not found" and return unless (request = ServiceRequest.find_by(id: request_id))
+    render_error "service no longer exist for this request" and return unless service = request.service
+    render_error "you are not the client of this service request" and return unless service.client_id == @current_user.id
     # Validate service request is approved
     render_error "service request with id #{request_id} was not approved by service provider with id #{request.service_provider.id}" and return unless (request.approved?)
-    # Retrieve service from DB
-    render_error "service with id #{request.service.id} not found" and return unless (service = request.service)
     # Confirm service
-    service.status = Service.statuses[:confirmed]
+    service.confirmed!
+    service.service_provider = request.service_provider
+    
     #handle save
     if service.save
       render :json => {}, :status => 200
@@ -178,7 +180,7 @@ class ServicesController < ApplicationController
       render_error "couldn't save"
     end
     # Delete all other related requests
-    ServiceRequest.delete_all(service: service)
+    ServiceRequest.delete_all(service_id: service.id)
   end
 
   private
