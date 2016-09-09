@@ -75,11 +75,11 @@ class ServicesController < ApplicationController
   def my_requests
     render_error "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
 
-    @with_client = true
-    @with_service = true
-    @requests = @current_user.service_requests
-    render "services/requests"
-  end
+        @with_client = true
+        @with_service = true
+        @requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
+        render "services/requests"
+    end
 
 
   def add_request
