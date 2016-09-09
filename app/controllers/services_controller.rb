@@ -73,6 +73,7 @@ class ServicesController < ApplicationController
 
 
     def my_requests
+        puts @current_user
         render_forbidden "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
 
         @with_client = true
