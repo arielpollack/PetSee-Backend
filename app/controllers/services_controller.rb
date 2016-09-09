@@ -74,11 +74,11 @@ class ServicesController < ApplicationController
 
     def my_requests
         render_forbidden "you're not a provider" and return unless @current_user.instance_of?(ServiceProvider)
-        headers['Last-Modified'] = Time.now.httpdate
+
         @with_client = true
         @with_service = true
-        requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
-        render "services/requests", :locals => {:requests => requests}
+        @requests = ServiceRequest.pending.where(service_provider_id: @current_user.id)
+        render "services/requests"
     end
 
 
