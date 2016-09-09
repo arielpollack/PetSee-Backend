@@ -18,20 +18,40 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def render_unprocessable_entity(error)
+    render_error error, :unprocessable_entity
+  end
+
+  def render_bad_request(error)
+    render_error error, :bad_request
+  end
+
   def render_unauthorized
-  	render :json => {:error => 'Bad credentials'}, :status => 401
+    render_error 'Bad credentials', :unauthorized
+  end
+
+  def render_forbidden(error)
+    render_error error, :forbidden
+  end
+
+  def render_success
+    render :json => {}, :status => 200
+  end
+
+  def render_not_found(error)
+    render_error error, :not_found
   end
 
   def set_default_response_format
     request.format = :json
   end
 
-  def render_error(error, status = :unprocessable_entity)
+  def render_error(error, status)
     render :json => {:error => error}, :status => status
   end
 
   def render_errors(errors)
-    render :json => {:has_erors => true, :errors => errors}, :status => :unprocessable_entity
+    render :json => {:has_errors => true, :errors => errors}, :status => :unprocessable_entity
   end
 
 end
