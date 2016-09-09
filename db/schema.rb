@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908175559) do
+ActiveRecord::Schema.define(version: 20160909164003) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "service_id"
