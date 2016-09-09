@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909164003) do
+ActiveRecord::Schema.define(version: 20160909223336) do
 
   create_table "locations", force: :cascade do |t|
-    t.integer  "service_id"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "service_id"
   end
 
   add_index "locations", ["service_id"], name: "index_locations_on_service_id"
@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 20160909164003) do
   create_table "service_requests", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "service_provider_id"
-    t.string   "status"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "status",              default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "service_requests", ["service_id"], name: "index_service_requests_on_service_id"
@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(version: 20160909164003) do
     t.integer  "service_provider_id"
     t.datetime "time_start"
     t.datetime "time_end"
-    t.string   "status"
-    t.string   "type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "status",              default: 0
+    t.integer  "type",                default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "location_id"
   end
 
@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20160909164003) do
     t.string   "token"
     t.string   "name"
     t.string   "phone",        limit: 13
-    t.string   "type"
     t.integer  "location_id"
     t.text     "about",        limit: 255
     t.string   "image"
@@ -122,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160909164003) do
     t.integer  "rating_count",                                     default: 0
     t.datetime "created_at",                                                     null: false
     t.datetime "updated_at",                                                     null: false
+    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
