@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
         elsif @current_user.instance_of?(ServiceProvider)
             @services = Service.includes(:pet, :client).where(service_provider_id: @current_user.id)
             @with_client = true
-            @with_service_provider = false
+            @with_service_provider = true
         end
     end
 
