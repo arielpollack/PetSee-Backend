@@ -67,8 +67,7 @@ class ServicesController < ApplicationController
 
     # return a list of relevant service providers for a specific service
     def available_service_providers
-        last_index = params[:last_index] || 0
-        @providers = ServiceProvider.all.order(rating: :asc).order(rating_count: :asc).where("id > ?", last_index).limit(20)
+        @providers = ServiceProvider.order(rating: :desc).order(rating_count: :desc)
     end
 
 
