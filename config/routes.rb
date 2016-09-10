@@ -16,7 +16,9 @@ Rails.application.routes.draw do
         resources :users, param: :user_id, only: [:index, :show] do
             member do
                 resources :pets, only: [:index]
-                resources :reviews, only: [:index, :create]
+                resources :reviews, only: [:index, :create] do
+                    get :review_about_user, on: :collection
+                end
             end
 
             collection do

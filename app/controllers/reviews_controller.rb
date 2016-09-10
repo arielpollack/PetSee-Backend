@@ -33,13 +33,13 @@ class ReviewsController < ApplicationController
     # Create new review
     def create
         r = review_params
-        render_error "rate must be between 1 to 5", :render_forbidden and return if not (1..5).include? r[:rate].to_i
-        render_error "feedback must contain text", :render_forbidden and return if r[:feedback].nil? || r[:feedback] == ""
+        render_forbidden "rate must be between 1 to 5" and return if not (1..5).include? r[:rate].to_i
+        # render_forbidden "feedback must contain text" and return if r[:feedback].nil? || r[:feedback] == ""
 
         @review = Review.where(writer_id: @current_user.id, user_id: params[:user_id]).first
         Rails.logger.info "IS NEW REVIEW? #{@review.nil?}"
 
-        render_error "You have already written a review about this user", :render_forbidden and return if !@review.nil?
+        render_forbidden "You have already written a review about this user" and return unless @review.nil?
 
         r[:user_id] = params[:user_id]
         r[:writer_id] = @current_user.id
@@ -50,7 +50,7 @@ class ReviewsController < ApplicationController
         if @review.save
             render 'reviews/_review', :locals => {:review => @review}
         else
-            render :json => {:has_erors => true, :errors => review.errors}, :status => :unprocessable_entity
+            render :json => {:has_errors => true, :errors => review.errors}, :status => :unprocessable_entity
         end
 
     end
