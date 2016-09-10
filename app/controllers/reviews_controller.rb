@@ -54,8 +54,8 @@ class ReviewsController < ApplicationController
     end
 
     def update_existing_review
-        render_not_found "missing review_id" and return if (review_id = params[:review_id].nil?)
-        render_not_found "no review with id" and return unless (@review = Review.find_by_id(review_id) and !@review.nil?)
+        render_not_found "missing review_id" and return unless (review_id = params[:review_id])
+        render_not_found "no review with id" and return unless (@review = Review.find_by_id(review_id))
         render_forbidden "You are not the writer of this review" and return unless @review.writer_id == @current_user.id
 
         @review.update(review_params)
