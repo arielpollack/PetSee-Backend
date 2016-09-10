@@ -22,10 +22,12 @@ class ReviewsController < ApplicationController
 
     # Return a review that current_user wrote on user_id
     def review_about_user
-        @reviews = Review.includes(:user).where(writer_id: @current_user.id).where(user_id: params[:user_id])
+        review = Review.includes(:user).where(writer_id: @current_user.id, user_id: params[:user_id]).first
+        render_not_found "no review on this user yet" and return if review.nil?
+
         @with_user = true
         @with_writer = false
-        render 'reviews/index'
+        render 'reviews/_review', :locals => {:review => review}
     end
 
     # Create new review
