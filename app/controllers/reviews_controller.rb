@@ -54,9 +54,9 @@ class ReviewsController < ApplicationController
     end
 
     def update_existing_review
-        @review = Review.where(id: params[:review_id]).first
-        render_error "You are not the writer of this review", :render_forbidden and return if not @review.writer_id == @current_user.id
-        render_error "There is no review of this number", :render_forbidden and return if @review.nil?
+        render_not_found "missing review_id" and return unless (review_id = params[:review_id].nil?)
+        render_not_found "no review with id" and return unless (@review = Review.find_by_id(review_id))
+        render_forbidden "You are not the writer of this review" and return unless @review.writer_id == @current_user.id
 
         @review.update(review_params)
         if @review.save
