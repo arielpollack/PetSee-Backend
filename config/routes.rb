@@ -27,7 +27,7 @@ Rails.application.routes.draw do
                 end
                 resources :reviews, only: [] do
                     get :index, action: :my_reviews, on: :collection # reviews written by user
-                    put action: :update_existing_review
+                    put :update_existing_review, on: :collection
                 end
             end
         end
