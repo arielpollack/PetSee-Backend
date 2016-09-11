@@ -16,7 +16,7 @@ class NotificationsService
     }
 
     def self.send_notification(originUser, destinationUser, type)
-        return unless (token = destinationUser.device_token)
+        return unless (token = destinationUser.device_push_token)
 
         # increase badge count
         destinationUser.notifications_count += 1
