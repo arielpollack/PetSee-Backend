@@ -5,7 +5,7 @@ class NotificationsService
     APN = Houston::Client.development
     APN.certificate = File.read(File.join(Rails.root, 'lib', 'petsee-push-cert.pem'))
 
-    TYPES = {
+    self.TYPES = {
         request_your_service: 1,
         approved_your_request: 2,
         confirmed_you_as_provider: 3,
