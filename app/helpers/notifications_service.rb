@@ -3,7 +3,7 @@ require 'houston'
 class NotificationsService
 
     APN = Houston::Client.development
-    APN.certificate = File.read('/lib/petsee-push-cert.pem')
+    APN.certificate = File.read(File.join(Rails.root, 'lib', 'petsee-push-cert.pem'))
 
     TYPES = {
         request_your_service: 1,
