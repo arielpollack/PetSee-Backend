@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
 
     def device_token
-        @current_user.device_token = params[:token]
+        @current_user.device_push_token = params[:token]
         if @current_user.save
             render_success
         else
