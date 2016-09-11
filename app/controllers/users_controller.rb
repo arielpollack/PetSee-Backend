@@ -44,7 +44,12 @@ class UsersController < ApplicationController
     end
 
     def reset_badge_count
-
+        @current_user.notifications_badge_count = 0
+        if @current_user.save
+            render_success
+        else
+            render_error "couldn't save", 400
+        end
     end
 
     private

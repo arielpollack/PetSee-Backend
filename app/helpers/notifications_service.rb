@@ -19,12 +19,12 @@ class NotificationsService
         return unless (token = destinationUser.device_push_token)
 
         # increase badge count
-        destinationUser.notifications_count += 1
+        destinationUser.notifications_badge_count += 1
         destinationUser.save
 
         notification = Houston::Notification.new(device: token)
         notification.alert = text_for_type(originUser, type)
-        notification.badge = destinationUser.notifications_count
+        notification.badge = destinationUser.notifications_badge_count
         notification.content_available = true
         notification.custom_data = {t: type}
 
