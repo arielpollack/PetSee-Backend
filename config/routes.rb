@@ -22,6 +22,9 @@ Rails.application.routes.draw do
             end
 
             collection do
+                put :device_token
+                put :reset_badge_count
+
                 resources :pets, param: :pet_id, only: [:index, :create, :update] do
                     collection do
                         post :upload_image

@@ -34,6 +34,19 @@ class UsersController < ApplicationController
         # end
     end
 
+    def device_token
+        @current_user.device_token = params[:token]
+        if @current_user.save
+            render_success
+        else
+            render_error "couldn't save", 400
+        end
+    end
+
+    def reset_badge_count
+
+    end
+
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
