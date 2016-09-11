@@ -23,7 +23,7 @@ class NotificationsService
         destinationUser.save
 
         notification = Houston::Notification.new(device: token)
-        notification.alert = text_for_type(originUser, type)
+        notification.alert = text_for_type(type, originUser)
         notification.badge = destinationUser.notifications_badge_count
         notification.content_available = true
         notification.custom_data = {t: type}
