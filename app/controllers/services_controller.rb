@@ -96,6 +96,9 @@ class ServicesController < ApplicationController
         # Render successful response
         @with_provider = true
         render 'services/_request', locals: {:request => request}
+
+        # notify service provider
+        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:request_your_service])
     end
 
     def add_location
@@ -122,6 +125,9 @@ class ServicesController < ApplicationController
     # 3-way handshake - part #2
     def approve
         set_service_request_status(ServiceProvider, ServiceRequest.statuses[:approved])
+
+        # notify client
+        NotificationsService.send_notification(@current_user, @service_request.service.client, NOTIFICATION_TYPE[:approved_your_request])
     end
 
 
@@ -143,6 +149,9 @@ class ServicesController < ApplicationController
         @service.delete
         # Render success
         render_success
+
+        # notify service provider
+        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_cancelled])
     end
 
     # 3-way handshake - part #3
@@ -167,6 +176,9 @@ class ServicesController < ApplicationController
         ServiceRequest.delete_all(service: service)
         # Render success
         render_success
+
+        # notify service provider
+        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:confirmed_you_as_provider])
     end
 
     def start
@@ -180,6 +192,9 @@ class ServicesController < ApplicationController
         render_unprocessable_entity "couldn't save" and return false unless @service.save
         # Render success
         render_success
+
+        # notify client
+        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_started])
     end
 
 
@@ -194,6 +209,9 @@ class ServicesController < ApplicationController
         render_unprocessable_entity "couldn't save" and return false unless @service.save
         # Render success
         render_success
+
+        # notify client
+        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_ended])
     end
 
 
