@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
         new_service[:time_end] = parse_time(time_end)
 
         # generate location for service
-        location = Location.new({:latitude => params[:lat], :longitude => params[:lng]})
+        location = Location.new({:latitude => params[:lat], :longitude => params[:lng], :street_address => params[:address]})
         render_unprocessable_entity "couldn't save location" and return unless location.save
         new_service[:location_id] = location.id
 
