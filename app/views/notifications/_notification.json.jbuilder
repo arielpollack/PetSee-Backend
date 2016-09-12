@@ -1,4 +1,4 @@
-json.extract! notification, :id, :text
+json.extract! notification, :id, :text, :read
 
 json.created_at notification.created_at.to_s
 json.type notification.notification_type

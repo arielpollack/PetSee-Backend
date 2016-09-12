@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912064757) do
+ActiveRecord::Schema.define(version: 20160912131838) do
 
   create_table "locations", force: :cascade do |t|
     t.integer  "service_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160912064757) do
     t.integer  "object_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read", default: false
   end
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"

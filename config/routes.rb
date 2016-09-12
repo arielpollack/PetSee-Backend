@@ -59,7 +59,10 @@ Rails.application.routes.draw do
 
         resources :races, only: [:index, :create]
 
-        resources :notifications, only: [:index]
+        resources :notifications, param: :notification_id, only: [:index] do
+            put :read, on: :member
+            put :read_all, on: :collection
+        end
 
         resources :auth, only: [] do
             collection do
