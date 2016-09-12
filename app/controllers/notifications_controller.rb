@@ -15,5 +15,6 @@ class NotificationsController < ApplicationController
 
     def read_all
         Notification.where(user_id: @current_user.id, read: false).update_all(read: true)
+        render_success
     end
 end
