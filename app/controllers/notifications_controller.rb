@@ -3,6 +3,9 @@ class NotificationsController < ApplicationController
     before_action :authenticate
 
     def index
+        @with_client = true
+        @with_service_provider = true
+        @with_provider
         @notifications = Notification.where(user_id: @current_user.id).order(created_at: "desc")
     end
 
