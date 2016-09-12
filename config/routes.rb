@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
         resources :races, only: [:index, :create]
 
+        resources :notifications, only: [:index]
+
         resources :auth, only: [] do
             collection do
                 get :is_email_exist

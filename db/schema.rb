@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911115518) do
+ActiveRecord::Schema.define(version: 20160912064757) do
 
   create_table "locations", force: :cascade do |t|
-      t.integer "service_id"
+    t.integer  "service_id"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", null: false
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20160911115518) do
   end
 
   add_index "locations", ["service_id"], name: "index_locations_on_service_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "notification_type"
+    t.integer  "object_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
@@ -76,9 +87,9 @@ ActiveRecord::Schema.define(version: 20160911115518) do
   create_table "service_requests", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "service_provider_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "status"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "service_requests", ["service_id"], name: "index_service_requests_on_service_id"
@@ -90,10 +101,10 @@ ActiveRecord::Schema.define(version: 20160911115518) do
     t.integer  "service_provider_id"
     t.datetime "time_start"
     t.datetime "time_end"
-    t.string "status"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "status"
+    t.string   "type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "services", ["client_id"], name: "index_services_on_client_id"
@@ -111,17 +122,17 @@ ActiveRecord::Schema.define(version: 20160911115518) do
     t.string   "password"
     t.string   "token"
     t.string   "name"
-    t.string "phone", limit: 13
-    t.string "type"
+    t.string   "phone",                     limit: 13
+    t.string   "type"
     t.integer  "location_id"
-    t.text "about", limit: 255
+    t.text     "about",                     limit: 255
     t.string   "image"
-    t.decimal "rating", precision: 2, scale: 1, default: 0.0
-    t.integer "rating_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "device_push_token"
-    t.integer "notifications_badge_count", default: 0
+    t.decimal  "rating",                                precision: 2, scale: 1, default: 0.0
+    t.integer  "rating_count",                                                  default: 0
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
+    t.string   "device_push_token"
+    t.integer  "notifications_badge_count",                                     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

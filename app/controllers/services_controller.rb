@@ -98,7 +98,7 @@ class ServicesController < ApplicationController
         render 'services/_request', locals: {:request => request}
 
         # notify service provider
-        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:request_your_service])
+        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:request_your_service], request.id)
     end
 
     def add_location
@@ -127,7 +127,7 @@ class ServicesController < ApplicationController
         set_service_request_status(ServiceProvider, ServiceRequest.statuses[:approved])
 
         # notify client
-        NotificationsService.send_notification(@current_user, @service_request.service.client, NOTIFICATION_TYPE[:approved_your_request])
+        NotificationsService.send_notification(@current_user, @service_request.service.client, NOTIFICATION_TYPE[:approved_your_request], @service_request.service_id)
     end
 
 
@@ -151,7 +151,7 @@ class ServicesController < ApplicationController
         render_success
 
         # notify service provider
-        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_cancelled])
+        NotificationsService.send_notification(@current_user, @service.service_provider, NOTIFICATION_TYPE[:service_cancelled], @service.id)
     end
 
     # 3-way handshake - part #3
@@ -178,7 +178,7 @@ class ServicesController < ApplicationController
         render_success
 
         # notify service provider
-        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:confirmed_you_as_provider])
+        NotificationsService.send_notification(@current_user, service_provider, NOTIFICATION_TYPE[:confirmed_you_as_provider], service.id)
     end
 
     def start
@@ -194,13 +194,13 @@ class ServicesController < ApplicationController
         render_success
 
         # notify client
-        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_started])
+        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_started], @service.id)
     end
 
 
     def end
         # Set status pre-requisites
-        return unless service_pre_requisites_validated?(ServiceProvider)
+        render_unauthorized and return unless service_pre_requisites_validated?(ServiceProvider)
         # End service
         @service.time_end = Time.now.utc
         # Set status
@@ -211,7 +211,7 @@ class ServicesController < ApplicationController
         render_success
 
         # notify client
-        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_ended])
+        NotificationsService.send_notification(@current_user, @service.client, NOTIFICATION_TYPE[:service_ended], @service.id)
     end
 
 

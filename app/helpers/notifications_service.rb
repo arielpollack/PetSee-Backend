@@ -15,20 +15,31 @@ class NotificationsService
     APN = Houston::Client.development
     APN.certificate = File.read(File.join(Rails.root, 'lib', 'petsee-push-cert.pem'))
 
-    def self.send_notification(originUser, destinationUser, type)
-        return unless (token = destinationUser.device_push_token)
+    def self.send_notification(origin_user, destination_user, type, object_id)
+        return unless (token = destination_user.device_push_token)
 
         # increase badge count
-        destinationUser.notifications_badge_count += 1
-        destinationUser.save
+        destination_user.notifications_badge_count += 1
+        destination_user.save
 
-        notification = Houston::Notification.new(device: token)
-        notification.alert = text_for_type(type, originUser)
-        notification.badge = destinationUser.notifications_badge_count
-        notification.content_available = true
-        notification.custom_data = {t: type}
+        notification_text = text_for_type(type, origin_user)
 
-        APN.push(notification)
+        notification = Notification.new({
+                                            :user_id => destination_user.id,
+                                            :text => notification_text,
+                                            :notification_type => type,
+                                            :object_id => object_id
+                                        })
+        notification.save
+
+        apns_notification = Houston::Notification.new(device: token)
+        apns_notification.alert = notification_text
+        apns_notification.sound = "default"
+        apns_notification.badge = destination_user.notifications_badge_count
+        apns_notification.content_available = true
+        apns_notification.custom_data = {t: type, o: object_id}
+
+        APN.push(apns_notification)
     end
 
     private
