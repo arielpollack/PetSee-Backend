@@ -5,7 +5,8 @@ class NotificationsController < ApplicationController
     def index
         @with_client = true
         @with_service_provider = true
-        @with_provider
+        @with_provider = true
+        @with_service = true
         @notifications = Notification.where(user_id: @current_user.id).order(created_at: "desc")
     end
 
