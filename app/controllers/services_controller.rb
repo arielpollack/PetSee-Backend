@@ -266,7 +266,7 @@ class ServicesController < ApplicationController
 
     private
     def parse_time(time)
-        Time.at(time.to_i).to_datetime
+        Time.at(time).to_datetime
     end
 
 
