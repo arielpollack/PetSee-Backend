@@ -4,7 +4,7 @@ json.created_at notification.created_at.to_s
 json.type notification.notification_type
 json.object do
     case notification.notification_type
-        when NOTIFICATION_TYPE[:request_your_service], NOTIFICATION_TYPE[:approved_your_request]
+        when NOTIFICATION_TYPE[:request_your_service]
             if request = ServiceRequest.find_by_id(notification.object_id)
                 json.partial! 'services/request', :request => request
             else
