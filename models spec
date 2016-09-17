@@ -11,13 +11,10 @@ models
 		services
 		service_requests
 		reviews
-		wrote_reviews
 
 	client < user
 		pets
 
-	service_provider < user
-		skills
 	
 	pet
 		name
@@ -59,12 +56,3 @@ models
 		lat
 		lng
 		name
-
-	skill
-		name
-
-	service_provider_skill
-		skill
-		service_provider
-		years_of_experience
-		details

@@ -74,17 +74,6 @@ ActiveRecord::Schema.define(version: 20160912183721) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
   add_index "reviews", ["writer_id"], name: "index_reviews_on_writer_id"
 
-  create_table "service_provider_skills", force: :cascade do |t|
-    t.integer  "skill_id"
-    t.integer  "service_provider_id"
-    t.integer  "years_of_experience", limit: 2
-    t.text     "details",             limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-  end
-
-  add_index "service_provider_skills", ["service_provider_id"], name: "index_service_provider_skills_on_service_provider_id"
-  add_index "service_provider_skills", ["skill_id"], name: "index_service_provider_skills_on_skill_id"
 
   create_table "service_requests", force: :cascade do |t|
     t.integer  "service_id"
@@ -112,12 +101,6 @@ ActiveRecord::Schema.define(version: 20160912183721) do
   add_index "services", ["client_id"], name: "index_services_on_client_id"
   add_index "services", ["pet_id"], name: "index_services_on_pet_id"
   add_index "services", ["service_provider_id"], name: "index_services_on_service_provider_id"
-
-  create_table "skills", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
